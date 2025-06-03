@@ -24,11 +24,3 @@ It demonstrates my understanding of cloud infrastructure, manual server configur
 
 -------------------------------------------------------------------------------------
 
-## Server Setup Steps
-
-### 1. Launch EC2 Instance
-
-* AWS t2.micro with Ubuntu 22.04
-* Opened ports: 22, 80, 443
-* Connected via SSH:
-

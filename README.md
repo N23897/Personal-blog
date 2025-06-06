@@ -2,7 +2,7 @@
 
 **Author:** Nasrin Sadiqi  
 **Live Site:** [https://livinginbetweenblog.space](https://livinginbetweenblog.space)  
-**Server IP Address**: 18.139.162.207
+**Server IP Address**:** 18.139.162.207
 **Video Explainer:** (add your video link here)
 
 ---

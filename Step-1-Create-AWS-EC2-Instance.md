@@ -1,63 +1,82 @@
-Step 1: Create an AWS EC2 Instance
+Step 1: Launch an AWS EC2 Instance (Ubuntu)
+What is an EC2 Instance?
+An EC2 instance is a virtual computer in the cloud that you control. It will act as your web server.
 
-Goal:
-Set up a virtual server in the cloud (on Amazon Web Services) to host your website.
+1.1. Sign Up or Log In to AWS
+Go to https://aws.amazon.com/.
 
-1.1 Create an AWS Account
-Go to https://aws.amazon.com/
+If you don’t have an account, click “Create an AWS Account” and follow the instructions. You’ll need to enter some personal and payment information (you can use the free tier).
 
-Click “Create an AWS Account” (or log in if you already have one).
+If you have an account, just sign in.
 
-Complete the signup process (it’s free to start, but requires a credit card).
+1.2. Access the EC2 Dashboard
+After logging in, type “EC2” in the search bar at the top of the AWS console and select EC2 from the results.
 
-1.2 Launch a New EC2 Instance
-Go to the AWS Console:
-After logging in, type “EC2” in the search bar and select EC2 from the list.
+This opens the EC2 Dashboard.
 
-Click “Launch Instance”:
-This starts the process of creating your virtual server.
+1.3. Launch a New Instance
+Click the “Launch Instance” button (usually at the top right).
 
-Name your instance:
-Enter a name like “Personal Blog Server”.
+1.3.1. Name Your Instance
+In the “Name and tags” field, enter a name like Personal Blog Server.
 
-Choose an Amazon Machine Image (AMI):
+1.3.2. Choose an Amazon Machine Image (AMI)
+In the “Application and OS Images” section, search for and select:
+Ubuntu Server 22.04 LTS (HVM), SSD Volume Type
 
-Select Ubuntu Server 22.04 LTS (HVM), SSD Volume Type – 64-bit x86
-(This is eligible for the free tier.)
+Confirm it says “Free tier eligible”.
 
-Choose Instance Type:
+1.3.3. Choose Instance Type
+Select t2.micro (which is free tier eligible).
 
-Select t2.micro (eligible for free tier).
+1.3.4. Configure Key Pair (for SSH Login)
+Under “Key pair (login)”, choose Create new key pair.
 
-Configure Key Pair (login):
+Name it (e.g., myblog-key), select PEM format, and click Create key pair.
 
-Click “Create new key pair”
+Download the .pem file and save it somewhere safe (you will need this to connect to your server later).
 
-Name it something like myblog-key and select .pem file format.
+1.3.5. Configure Network Settings (Security Group)
+Under “Network settings,” click Edit.
 
-Download it and save it in a safe place on your computer. You need this to connect later.
+Make sure these ports are allowed:
 
-Network settings (firewall):
+SSH (port 22): so you can connect to your server.
 
-Allow these ports:
+HTTP (port 80): so your website can be visited.
 
-22 (SSH) for connecting to the server
+HTTPS (port 443): so your site can be secure (SSL/HTTPS).
 
-80 (HTTP) for your website
+If any are missing, click “Add security group rule” and select the correct type/port.
 
-443 (HTTPS) for secure web access
+1.3.6. Launch the Instance
+Scroll down and click the orange “Launch Instance” button.
 
-You can do this by clicking “Edit” next to the “Network settings” section and adding the rules.
+Wait a few seconds. You should see a “Success” message and your new instance listed.
 
-Launch instance:
+1.4. Find Your Public IPv4 Address
+In the EC2 Dashboard, click “Instances” in the left menu.
 
-Click the orange “Launch Instance” button at the bottom.
+Find your new instance. There should be a column called Public IPv4 address.
 
-1.3 Find Your Server’s Public IP Address
-In the EC2 Dashboard, under “Instances”, find your new instance.
+Write this down or copy it—you’ll need it to connect and set up your website.
 
-The Public IPv4 address will be listed in the details.
-(Write this down—you’ll use it later.)
+Summary of What You’ve Done
+You’ve created a virtual Ubuntu server in the cloud
 
-Your AWS EC2 instance is now set up and running!
-You have a virtual server ready to use.
+You have a .pem key file to access it securely
+
+Your server is ready for the next steps
+
+Example Screenshots to Include:
+AWS EC2 Dashboard
+
+“Launch Instance” page
+
+Ubuntu Server 22.04 selected
+
+Key pair creation
+
+Security group settings with ports 22, 80, and 443
+
+Instance running and public IP visible

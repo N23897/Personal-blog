@@ -1,84 +1,89 @@
 Step 5: Set Up Your Domain Name (DNS)
-Now you’ll connect a custom domain name (like yourblog.com) to your EC2 instance.
-This step uses Namecheap as an example, but the process is similar on GoDaddy or others.
-
 5.1 Buy a Domain Name
-Go to https://www.namecheap.com/
+If you don’t already have a domain:
 
-Use the search bar to find an available domain you like (e.g., livinginbetweenblog.space)
+Go to a domain registrar like Namecheap, GoDaddy, or any you prefer.
 
-Add it to your cart and complete the purchase
-
-Screenshot:
-
-Namecheap’s domain search and purchase page
-
-5.2 Go to Your Domain’s Dashboard
-Log in to Namecheap
-
-Click “Domain List” on the left sidebar
-
-Find your domain and click the “Manage” button next to it
+Search for a domain name (e.g., livinginbetweenblog.space) and complete the purchase.
 
 Screenshot:
 
-Namecheap domain dashboard, showing your domain and “Manage” button
+Domain search or purchase confirmation page
 
-5.3 Find Advanced DNS or Host Records
-Click the “Advanced DNS” tab (sometimes called “DNS” or “Host Records”)
+5.2 Open Your Domain’s DNS Settings
+Log in to your domain provider (e.g., Namecheap).
+
+Go to the “Domain List” or “My Domains.”
+
+Click “Manage” next to your domain.
+
+Find the “Advanced DNS” or “DNS Settings” tab (sometimes “Host Records”).
 
 Screenshot:
 
-Advanced DNS/Host Records section
+DNS settings or “Advanced DNS” screen
 
-5.4 Add/Edit an A Record
-In the “Host Records” or “Records” section, find the A Record for @ (this represents your main domain, e.g., livinginbetweenblog.space)
+5.3 Set the A Record to Point to Your EC2 Public IP
+Find the A Record for @ (the main domain).
 
-Click “Edit” (or “Add New Record” if none exists)
-
-Set the fields:
+If one exists, edit it. If not, add a new A Record.
 
 Host: @
 
-Value: your EC2 Public IPv4 address (e.g., 52.201.123.45)
+Value: your EC2 Public IPv4 address (from Step 1)
 
-TTL: leave as “Automatic” or “30 min”
+TTL: Leave as default (Automatic or 30 minutes is fine)
 
-Click the green checkmark or “Save” button to save your changes
+Save or confirm changes.
 
 Screenshot:
 
-A record editing screen, showing “@” and your EC2 IP
+A Record edit form with your EC2 IP entered
+
+5.4 (Optional) Add an A Record for www
+To allow both yourdomain.com and www.yourdomain.com to work:
+
+Add another A Record:
+
+Host: www
+
+Value: your EC2 Public IPv4 address
+
+Save.
 
 5.5 Wait for DNS Propagation
-It usually takes 5–30 minutes for DNS changes to spread across the internet
+It may take 5 to 30 minutes for the new DNS settings to spread across the internet.
 
-Sometimes it can take up to a few hours for new domains
+Sometimes, for new domains, it can take a few hours.
 
 5.6 Test Your Domain
-In your browser, go to your domain (e.g., http://livinginbetweenblog.space)
+In your browser, visit:
 
-You should see your website!
+arduino
+Copy
+Edit
+http://yourdomain.com
+You should see your website (the same as you saw at your server’s public IP).
 
 Screenshot:
 
-Browser window showing your site loading from your new domain
+Browser with your site live at your domain
 
-🛠️ Troubleshooting
+5.7 Troubleshooting
 Domain doesn’t work?
 
-Wait a bit longer and refresh
+Double-check the A Record points to your correct EC2 IP.
 
-Make sure the A record is pointing to the correct EC2 Public IPv4 address
+Wait a bit longer, then refresh.
 
-Remove any old A records for the same host
+Use a tool like whatsmydns.net to check DNS propagation worldwide.
 
-Still not working after 2 hours?
+Still not working?
 
-Try flushing your browser cache or check from a different device/network
-
-Use a DNS checker like whatsmydns.net to see if your domain’s A record is updated worldwide
+Try clearing your browser cache, or test on a different device/network.
 
 ⭐️ Tips
-If you want your site to load with or without “www.”, add a second A record with Host: www and Value: your EC2 IP.
+Only one A record per host (@ or www). Remove old or extra A records.
+
+Use the registrar’s help section if the interface looks different.
 

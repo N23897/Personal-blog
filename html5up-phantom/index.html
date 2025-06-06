@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Living In Between Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="custom.css" /> <!-- Custom styling for mood toggle, polaroids, etc -->
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body class="is-preload">
+  <!-- Background flower canvas (from custom.js) -->
+  <canvas id="flower-canvas"></canvas>
+
+  <!-- Main Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+      <div class="inner">
+        <!-- Logo (can be added if needed) -->
+        <a href="index.html" class="logo"></a>
+
+        <!-- Navigation -->
+        <nav>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><button id="toggle-mood-btn">Press me</button></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Slide-Out Menu -->
+    <nav id="menu">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><strong>Blog Posts</strong></li>
+        <li><a href="entry-Skorea.html">🇰🇷 Exchange to South Korea</a></li>
+        <li><a href="entry-Melbourne.html">🇦🇺 Visiting Sydney</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Dynamic fun fact + intro -->
+        <div id="fun-fact" style="margin:20px 0;font-style:italic;"></div>
+
+        <header>
+          <h2 id="typed-text"></h2>
+          <p>Here I share my adventures, family recipes, and stories from everyday life. Make yourself at home—explore, connect, and join the journey!</p>
+        </header>
+
+        <!-- Map Section -->
+        <section>
+          <h2>Places I've visited so far</h2>
+          <div id="travel-map" style="height: 450px; border-radius: 12px; margin: 20px 0;"></div>
+
+          <!-- Countdown Section -->
+          <h2>Next Trip Countdown</h2>
+          <div id="countdown" class="flip-clock-horizontal">
+            <div class="flip-unit"><div class="flip-card" id="days">00</div><span class="flip-label">Days</span></div>
+            <span class="flip-colon">:</span>
+            <div class="flip-unit"><div class="flip-card" id="hours">00</div><span class="flip-label">Hours</span></div>
+            <span class="flip-colon">:</span>
+            <div class="flip-unit"><div class="flip-card" id="minutes">00</div><span class="flip-label">Minutes</span></div>
+            <span class="flip-colon">:</span>
+            <div class="flip-unit"><div class="flip-card" id="seconds">00</div><span class="flip-label">Seconds</span></div>
+          </div>
+        </section>
+      </div>
+    </div>
+         
+        <!-- Polaroid Carousel -->
+    <div class="polaroid-carousel">
+      <div class="polaroid-track">
+
+        <div class="polaroid large">
+          <img src="images/IMG_6896.jpeg" alt="Korean Food">
+          <div class="caption multi-line">This dish lasted less than 4 minutes. Was so good!!</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_6440.jpeg" alt="Nature Walk">
+          <div class="caption multi-line">Time paused here. Even my thoughts slowed down.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7566.jpeg" alt="City View">
+          <div class="caption multi-line">Felt small. Then felt infinite.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_5485.jpeg" alt="Hotel View">
+          <div class="caption multi-line">Guess where this is?</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7271.jpeg" alt="Animal Encounter">
+          <div class="caption multi-line">Cute. Chaotic energy. Mutual side-eye.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7383.jpeg" alt="Temple Visit">
+          <div class="caption multi-line">Took one photo. Felt like I captured the whole vibe.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/image123.jpeg" alt="Sports Field">
+          <div class="caption multi-line">Went for a walk. Stayed for the sky.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_6902.jpeg" alt="Unplanned Moment">
+          <div class="caption multi-line">Didn't plan this stop. Might be my favorite.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7311.jpeg" alt="Quiet Shrine">
+          <div class="caption multi-line">No one around. Just me and the air standing still.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7306.jpeg" alt="Market Street">
+          <div class="caption multi-line">Sights, sounds, smells—five senses on full blast.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_6751.jpeg" alt="Garden Visit">
+          <div class="caption multi-line">Sat longer than expected. Left lighter.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_8042.jpeg" alt="Flight Home">
+          <div class="caption multi-line">Didn't sleep. Watched clouds and memories roll by.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_8035.jpeg" alt="Airport">
+          <div class="caption multi-line">Took this pictures mainly bcs I didn't think I had taken enough.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7659.jpeg" alt="Views">
+          <div class="caption multi-line">So many picture worthy places in South Korea!.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7495.jpeg" alt="Snow">
+          <div class="caption multi-line">Only went outside for a bit for pictures,sooo cold!! .</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7707.jpeg" alt="Lookout">
+          <div class="caption multi-line">So Pretty!!!.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7914.jpeg" alt="Views">
+          <div class="caption multi-line">1am walks, so worth it!!.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7928.jpeg" alt="River">
+          <div class="caption multi-line">Sat by the river for a while, it was calming. very enjoyable.</div>
+        </div>
+
+        <div class="polaroid large">
+          <img src="images/IMG_7575.jpeg" alt="Views">
+          <div class="caption multi-line">Yes, more pictures of lookouts. No shame.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+   <!-- Back to top button -->
+  <button id="back-to-top" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;">⬆️ Top</button>
+
+  <!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <section>
+          <h2>Get in touch</h2>
+          <form action="https://formspree.io/f/xovwvyzo" method="POST">
+            <div class="fields">
+              <div class="field half"><input type="text" name="name" placeholder="Name" required /></div>
+              <div class="field half"><input type="email" name="email" placeholder="Email" required /></div>
+              <div class="field"><textarea name="message" placeholder="Message" required></textarea></div>
+            </div>
+            <ul class="actions"><li><input type="submit" value="Send" class="primary" /></li></ul>
+          </form>
+        </section>
+
+        <!-- Social Icons -->
+        <section>
+          <h2>Follow</h2>
+          <a href="https://instagram.com/nasrin.s01/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+          <a href="https://github.com/N23897" target="_blank" class="icon brands style2 fa-github"><span class="label">GitHub</span></a>
+        </section>
+
+        <!-- Copyright -->
+        <ul class="copyright">
+          <li>&copy; 2025 Living In Between. All rights reserved.</li>
+          <li>Design adapted from <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts (all at bottom for fast load) -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="custom.js"></script> <!-- Custom JS: flower shower, countdown, mood toggle -->
+
+  <!-- Leaflet Map + Pins -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('travel-map', {
+      zoomControl: false,
+      scrollWheelZoom: false,
+      dragging: true
+    }).setView([20.5, 100.5], 2.5);
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    const icon = new L.Icon({
+      iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+      iconSize: [28, 28],
+      iconAnchor: [14, 28],
+      popupAnchor: [0, -24]
+    });
+
+    const stops = [
+  { coords: [-33.868820, 151.209296], place: "Sydney", note: "Had a blast at Westpac Summit" },
+  { coords: [32.4279, 53.6880], place: "Iran", note: "The best breakfast food!! it was so good miss it heaps" },
+  { coords: [30.3753, 69.3451], place: "Pakistan", note: "Lahore & Karachi" },
+  { coords: [1.3521, 103.8198], place: "Singapore", note: "Stopover, street food" },
+  { coords: [-37.813628, 144.963058], place: "Melbourne", note: "Coffee capital" },
+  { coords: [36.5, 127.8], place: "South Korea", note: "Exchange adventure" }
+  ];
+
+
+    stops.forEach(stop => {
+      L.marker(stop.coords, { icon })
+        .addTo(map)
+        .bindPopup(`<strong>${stop.place}</strong><br>${stop.note}`);
+    });
+  </script>
+</body>
+</html>

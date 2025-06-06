@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>My Exchange to South Korea | Living In Between</title>
+
+  <!-- Mobile-friendly meta tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+  <!-- Main stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="custom.css" />
+
+  <!-- Aesthetic Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Inline styles specific to this page -->
+  <style>
+    .main-content {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 20px;
+      padding: 40px 28px;
+      max-width: 820px;
+      margin: 60px auto;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+      font-family: 'Quicksand', sans-serif;
+      color: #444;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      border-radius: 14px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #4c3c64;
+      font-size: 2.2rem;
+    }
+
+    .intro {
+      font-size: 1.1rem;
+      color: #6a5a7a;
+      margin-bottom: 32px;
+    }
+
+    .paragraph {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+
+<body class="is-preload">
+  <!-- Flower shower animation (handled in script) -->
+  <div id="petal-container"></div>
+
+  <div id="wrapper">
+
+    <!-- Header with site navigation -->
+    <header id="header">
+      <div class="inner">
+        <a href="index.html" class="logo"><span class="title">Living In Between</span></a>
+        <nav>
+          <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><button id="toggle-mood-btn" onclick="toggleMood()">Press me</button></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Slide-out navigation menu -->
+    <nav id="menu">
+      <h2>Menu</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><strong>Blog Posts</strong></li>
+        <li><a href="entry-Skorea.html">🇰🇷 Exchange to South Korea</a></li>
+        <li><a href="entry-Melbourne.html">🇦🇺 Visiting Sydney</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main blog content -->
+    <div id="main">
+      <div class="main-content">
+        <h1>My Exchange to South Korea</h1>
+        <p class="intro">A semester of change, challenge, and discovery.</p>
+
+        <!-- Feature image -->
+        <img src="images/IMG_6896.jpeg" alt="Korean food during exchange" />
+
+        <!-- Story body -->
+        <p class="paragraph">
+          Arriving in South Korea felt like stepping into a dream and a maze all at once. The first few days were filled with neon signs, unfamiliar sounds, and a beautiful sense of disorientation. I was both terrified and thrilled. I had never lived this far from home, and it felt like the world had suddenly become much bigger and more immediate.
+        </p>
+        <p class="paragraph">
+          At university, lectures were a mix of Korean and English, and I quickly learned that confidence doesn’t come from knowing everything—it comes from showing up even when you don’t. Every class, café, and market visit became an opportunity to stretch myself, learn a new phrase, or just laugh off the awkwardness.
+        </p>
+        <p class="paragraph">
+          Beyond classes, I wandered through old palaces, hiked up chilly hills to catch city views, and fell in love with tteokbokki, especially from street vendors late at night. There’s a kind of peace that comes from figuring things out on your own, in a place that owes you nothing and welcomes you anyway.
+        </p>
+        <p class="paragraph">
+          I returned home changed—not in a loud way, but in quiet, lasting shifts. I became more patient with myself, more curious about others, and more aware of how much beauty exists outside of what I already knew.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer with contact form and social links -->
+    <footer id="footer">
+      <div class="inner">
+        <section>
+          <h2>Get in touch</h2>
+          <form action="https://formspree.io/f/xovwvyzo" method="POST">
+            <div class="fields">
+              <div class="field half"><input type="text" name="name" placeholder="Name" required /></div>
+              <div class="field half"><input type="email" name="email" placeholder="Email" required /></div>
+              <div class="field"><textarea name="message" placeholder="Message" required></textarea></div>
+            </div>
+            <ul class="actions">
+              <li><input type="submit" value="Send" class="primary" /></li>
+            </ul>
+          </form>
+        </section>
+
+        <section>
+          <h2>Follow</h2>
+          <a href="https://instagram.com/nasrin.s01/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+          <a href="https://github.com/N23897" target="_blank" class="icon brands style2 fa-github"><span class="label">GitHub</span></a>
+        </section>
+
+        <ul class="copyright">
+          <li>&copy; 2025 Living In Between. All rights reserved.</li>
+          <li>Design adapted from <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Petal animation script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const petalContainer = document.getElementById("petal-container");
+      const petalEmoji = "🌸";
+
+      setInterval(() => {
+        const petal = document.createElement("span");
+        petal.textContent = petalEmoji;
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = (Math.random() * 4 + 6) + "s";
+        petal.style.fontSize = (Math.random() * 10 + 20) + "px";
+        petal.style.opacity = Math.random() * 0.3 + 0.5;
+        petalContainer.appendChild(petal);
+        setTimeout(() => petal.remove(), 10000);
+      }, 450);
+    });
+  </script>
+
+  <!-- Core Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="custom.js"></script>
+</body>
+</html>

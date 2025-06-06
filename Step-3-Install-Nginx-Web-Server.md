@@ -1,135 +1,108 @@
-Step 3: Install Nginx Web Server (Detailed)
-
-What is Nginx?
-Nginx (“engine-x”) is a free, open-source web server. It’s used to host websites and web applications. When you install Nginx, your server will be able to show your website to anyone who visits your server’s IP address.
+Step 3: Install Apache2 Web Server
+You’ll now install Apache2, a popular and reliable web server, on your Ubuntu EC2 instance. This will let your server show web pages to the world.
 
 3.1 Update Your Server’s Package List
 Why?
-Before installing any new software, you should update your server’s list of available packages. This ensures you get the latest version and avoid errors.
+To ensure you get the latest software and security updates before installing anything new.
 
-How to do it:
+How:
 
-In your EC2 terminal, type:
+In your EC2 terminal (from Step 2), type:
 
+bash
+Copy
+Edit
 sudo apt update
+sudo apt upgrade -y
+sudo = run as administrator (“superuser do”)
 
-What to expect:
+apt update = refreshes the list of available software
 
-Lots of lines starting with Hit:, Get:, or Reading package lists… Done.
+apt upgrade -y = installs any available updates (-y means “yes to all prompts”)
 
-No errors.
+What you should see:
+Lots of output as your server updates. Ends with your regular prompt.
 
-Screenshot:
+3.2 Install Apache2
+How:
 
-Troubleshooting:
+In the terminal, type:
 
-If you see “Temporary failure resolving…”, you might have a network issue (rare on AWS).
+bash
+Copy
+Edit
+sudo apt install apache2 -y
+This command tells Ubuntu to download and install the Apache2 web server.
 
-Try again after a minute or check your instance's internet connectivity.
+The process should take less than a minute.
 
-3.2 Install Nginx
-Why?
-This command downloads and installs the Nginx web server software on your EC2 instance.
+What you should see:
+More lines of output. At the end, Apache2 will be installed and running.
 
-How to do it:
+3.3 Check That Apache2 is Running
+How:
 
-In your terminal, type:
+Type:
 
-sudo apt install nginx -y
+bash
+Copy
+Edit
+sudo systemctl status apache2
+What you should see:
+A status report. Look for a line that says Active: active (running) in green.
 
-What to expect:
+If you see this, Apache2 is up and running!
 
-A list of packages being downloaded and installed
+Press q to exit the status screen.
 
-Lines like:
+3.4 Test Apache2 in Your Browser
+Go back to your AWS EC2 dashboard and find your instance’s Public IPv4 address (e.g., 13.211.120.10).
 
-Setting up nginx (1.18.0-...) ...
-The process may take a few seconds to a minute
+In your web browser, type:
 
-Screenshot:
+cpp
+Copy
+Edit
+http://<YOUR_PUBLIC_IP>
+(Replace <YOUR_PUBLIC_IP> with your actual IP, e.g., http://13.211.120.10)
 
-Troubleshooting:
+What you should see:
+A white page with the message:
 
-If you see a “permission denied” error, make sure you used sudo.
+rust
+Copy
+Edit
+Apache2 Ubuntu Default Page
+It works!
+If you see this, Apache2 is serving web pages to the internet!
 
-If you see a “package not found” error, go back and run sudo apt update again.
+3.5 Where to Place Your Website Files
+The web server “document root” is:
 
-3.3 Check That Nginx is Running
-Why?
-After installation, Nginx should start automatically. This command checks if it’s running and ready to serve your website.
+css
+Copy
+Edit
+/var/www/html/
+The default file you see is /var/www/html/index.html.
 
-How to do it:
+You will upload your own website files here in the next step!
 
-In your terminal, type:
+Screenshot suggestions:
+Terminal with sudo apt install apache2 -y
 
-sudo systemctl status nginx
-What to expect:
+Apache2 “It works!” page in the browser
 
-You should see something like:
+Status command showing active (running)
 
-● nginx.service - A high performance web server and a reverse proxy server
-     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
-     Active: active (running) ...
-The key thing is that it says active (running) in green.
+Troubleshooting
+Site won’t load:
 
-Screenshot:
+Check that your AWS security group allows HTTP (port 80).
 
-How to exit:
+Try restarting Apache2: sudo systemctl restart apache2
 
-Press the q key to quit the status view and return to the command prompt.
+“Active: inactive (dead)” or “failed” status:
 
-Troubleshooting:
+Try: sudo systemctl start apache2
 
-If you see inactive (dead) or failed, try starting it manually:
-
-
-sudo systemctl start nginx
-If it still doesn’t work, check for typos or error messages in the output.
-
-3.4 View the Default Nginx Web Page
-
-Why?
-You should now see Nginx’s test page from your browser to confirm the installation worked and your firewall settings are correct.
-
-How to do it:
-
-In the AWS EC2 console, find your instance’s Public IPv4 address.
-
-Open a new tab in your web browser.
-
-Type your IP address into the address bar, like this:
-
-http://<your-public-ip>
-
-Example:
-
-http://52.201.123.45
-Press Enter.
-
-What to expect:
-
-You should see a page that says “Welcome to nginx!”
-
-If you see this, your web server is running and accessible!
-
-Screenshot:
-
-Troubleshooting:
-
-If you get a timeout or “site can’t be reached” error:
-
-Make sure you allowed HTTP (port 80) in your security group settings in Step 1.
-
-Make sure your instance is running.
-
-Try sudo systemctl restart nginx and refresh the page.
-
-3.5 What’s Happening Behind the Scenes?
-Nginx is listening on port 80 for incoming web requests.
-
-When someone visits your server’s IP, Nginx serves a test page located at /var/www/html/index.nginx-debian.html.
-
-Later, you’ll replace this page with your own website files.
-
-You’re Ready!
-If you see the “Welcome to nginx!” page, your server is ready to host your website.
+Check for errors in terminal output.

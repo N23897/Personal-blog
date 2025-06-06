@@ -68,22 +68,16 @@ It includes step-by-step setup guides for infrastructure, domain, and SSL, plus 
 
 ---
 
-Documentation
+## Documentation
+
 All setup steps are included as Markdown files for easy following:
-
-Step 1: Launch EC2 Instance
-
-Step 2: Connect to Your EC2 Server
-
-Step 3: Install Apache2 Web Server
-
-Step 4: Upload Website Files
-
-Step 5: Set Up Domain Name (DNS)
-
-Step 6: Secure Your Site with HTTPS (SSL)
-
-Step 7: Final Checks and Troubleshooting
+- **[Step-1-Launch-EC2-Instance.md](deployment-guides/Step-1-Launch-EC2-Instance.md)**
+- **[Step-2-Connect-To-EC2.md](deployment-guides/Step-2-Connect-To-EC2.md)**
+- **[Step-3-Install-Apache2.md](deployment-guides/Step-3-Install-Apache2.md)**
+- **[Step-4-Upload-Website-Files.md](deployment-guides/Step-4-Upload-Website-Files.md)**
+- **[Step-5-Setup-Domain-DNS.md](deployment-guides/Step-5-Setup-Domain-DNS.md)**
+- **[Step-6-Secure-With-SSL.md](deployment-guides/Step-6-Secure-With-SSL.md)**
+- **[Step-7-Final-Checks.md](deployment-guides/Step-7-Final-Checks.md)**
 ---
 
 ## References & Credits

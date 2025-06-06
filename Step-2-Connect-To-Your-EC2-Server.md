@@ -1,80 +1,96 @@
-Step 2: Connect to Your EC2 Server
-Now that your EC2 instance is running, let’s connect to it so you can manage your server and install software.
-You have two easy options:
+Step 2: Connect to Your EC2 Instance (Ubuntu Server)
+Now that your EC2 instance is running, you need to connect to it to install software and manage your server.
 
-A. Use AWS’s browser terminal (EC2 Instance Connect)
+Option 1: Connect Using the AWS Web Browser (EC2 Instance Connect)
+Easiest if you’re a beginner!
 
-B. Use your own computer’s terminal with the PEM key
+Go to the AWS EC2 Dashboard and click Instances in the left sidebar.
 
-Option A: Connect Using EC2 Instance Connect (No Downloads Needed)
-Go to your AWS EC2 Console.
+Find your instance, and select the checkbox next to it.
 
-In the left menu, click “Instances”.
+Click the Connect button at the top.
 
-Select your instance by clicking the checkbox next to it.
+In the window that pops up, the default tab is EC2 Instance Connect.
+(If not, click the EC2 Instance Connect tab.)
 
-At the top, click the “Connect” button.
+Click the orange Connect button.
 
-Choose the “EC2 Instance Connect” tab (it’s the default).
+What happens:
+A new browser tab opens with a command-line terminal. You are now logged in as the ubuntu user on your server!
 
-Click the orange “Connect” button.
+Screenshot suggestions:
 
-A new browser tab will open with a terminal window.
-You are now logged in as the ubuntu user on your server!
+Instance selection in EC2 dashboard
 
-Screenshots to include:
+Connect button
 
-AWS EC2 "Instances" dashboard with your instance listed
+EC2 Instance Connect tab
 
-The "Connect" button at the top
+Browser terminal showing you’re logged in (ubuntu@ip-...:~$)
 
-The "EC2 Instance Connect" dialog/tab
+Option 2: Connect from Your Computer Using SSH
+If you want to use your own Terminal (Mac, Linux, Windows with WSL, or Git Bash):
 
-The terminal window after you connect
+2.1. Make Sure Your .pem Key Is Safe
+Find the .pem key file you downloaded in Step 1 (e.g., myblog-key.pem).
 
-Option B: Connect Using Your Terminal (macOS, Linux, or Windows PowerShell)
-Find your PEM key (downloaded during Step 1).
-Example location: ~/Downloads/myblog-key.pem
+Move it to a safe location (e.g., your home or downloads folder).
 
-Set correct permissions (only needed the first time):
+2.2. Set Permissions (IMPORTANT)
+Open your terminal and run:
 
 bash
 Copy
 Edit
 chmod 400 ~/Downloads/myblog-key.pem
-Open your terminal and connect with:
+(Replace the path if your .pem file is somewhere else)
+
+Why?
+SSH will refuse to use the key if it’s not “read-only” for your user, for security reasons.
+
+2.3. Find Your Public IP
+In the EC2 dashboard, copy your Public IPv4 address (e.g., 13.211.120.10).
+
+2.4. Connect Using SSH
+From your terminal, run:
 
 bash
 Copy
 Edit
 ssh -i ~/Downloads/myblog-key.pem ubuntu@<YOUR_PUBLIC_IP>
-Replace <YOUR_PUBLIC_IP> with your server’s Public IPv4 address (from Step 1.3).
-
 Example:
-ssh -i ~/Downloads/myblog-key.pem ubuntu@54.201.123.45
 
-Accept the prompt (type yes if asked).
+bash
+Copy
+Edit
+ssh -i ~/Downloads/myblog-key.pem ubuntu@13.211.120.10
+If it’s your first time connecting, you’ll see a message about authenticity. Type yes and press Enter.
 
-You’re now logged in as ubuntu on your EC2 server!
+What happens:
+You should see a welcome message and a prompt like:
 
-Screenshots to include:
+ruby
+Copy
+Edit
+ubuntu@ip-xxx-xxx-xxx-xxx:~$
+You’re now inside your Ubuntu server!
 
-Location of your .pem file in your file manager
+Screenshot suggestions:
 
-Example of running the ssh command in Terminal
+File location of .pem key
 
-Connected session (shows ubuntu@ip-address:~$)
+The terminal showing the ssh command
 
-Success!
-You are now connected to your EC2 server and ready to install the web server software in the next step.
+Successful login message
 
-//////////Tips & Troubleshooting\\\\\\\\\\\\\\\\\\
+Troubleshooting
 Permission denied (publickey):
 
-Make sure your PEM file permissions are set with chmod 400
+Make sure your .pem file permissions are set: chmod 400 myblog-key.pem
 
-Double-check the path and filename in your SSH command
+Double-check you’re using the correct username (ubuntu) and public IP.
 
-Cannot connect?
+Connection timed out:
 
-Make sure your instance is running and the security group allows SSH (port 22)
+Check your AWS security group allows SSH (port 22) from your IP.
+

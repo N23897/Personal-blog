@@ -1,40 +1,47 @@
-Step 4: Upload Website Files
-In this step, you’ll transfer your own website files (HTML, CSS, JavaScript, images, etc.) from your computer to your EC2 server so that Nginx can display your site.
+Step 4: Upload Your Website Files to Apache2
+Now that Apache2 is running, it’s time to put your actual website files on the server so the world can see your site.
 
-4.1 Where Do the Files Go?
-Nginx’s default web directory is:
+4.1 Where to Upload Your Files
+The folder Apache2 uses to serve web pages is:
 
 css
 Copy
 Edit
 /var/www/html/
-Anything you put in this folder becomes visible on your website.
+Anything you put here becomes public on your website!
 
 4.2 Prepare Your Website Files
-Make sure your website files are on your computer and ready to upload.
+On your own computer, make sure you have all your website files ready, such as:
 
-Example: index.html, custom.css, custom.js, and an /images folder for pictures.
+index.html
 
-4.3 Upload Files Using SCP (Secure Copy)
-What is SCP?
-SCP (“secure copy”) lets you safely transfer files from your computer to your EC2 server using your .pem key.
+custom.css
 
-a) Open Terminal (on your computer, not the server)
-On macOS or Linux: use Terminal.
+custom.js
 
-On Windows: use Windows Terminal or Git Bash.
+an /images folder (if you have images)
 
-b) Change to the Folder With Your Files
-For example, if your files are in Downloads/personal-blog, run:
+any other pages or assets
+
+4.3 Use SCP (Secure Copy) to Upload Files
+SCP lets you copy files from your computer to your AWS server using your .pem key.
+
+a) Open Terminal on Your Computer
+On macOS or Linux: Use the built-in Terminal app.
+
+On Windows: Use Git Bash or Windows Terminal.
+
+b) Navigate to Your Files’ Folder
+For example, if your files are in Downloads/mywebsite, use:
 
 bash
 Copy
 Edit
-cd ~/Downloads/personal-blog
-(Adjust the path as needed.)
+cd ~/Downloads/mywebsite
+(Change the path as needed.)
 
-c) Upload the Files
-Use this SCP command for each file:
+c) Copy Files to the Server
+Use this command for each file (replace paths and filenames as needed):
 
 bash
 Copy
@@ -42,67 +49,46 @@ Edit
 scp -i ~/Downloads/myblog-key.pem index.html ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
 scp -i ~/Downloads/myblog-key.pem custom.css ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
 scp -i ~/Downloads/myblog-key.pem custom.js ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
-For images or folders (recursively), add -r:
+Replace myblog-key.pem with your key file name.
+
+Replace <YOUR_PUBLIC_IP> with your EC2 public IP.
+
+To upload a whole folder (like images), use the -r flag:
 
 bash
 Copy
 Edit
 scp -i ~/Downloads/myblog-key.pem -r images ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
-Replace myblog-key.pem with your key file.
+d) Overwrite the Default File
+Your new index.html will replace the default Apache2 page.
 
-Replace <YOUR_PUBLIC_IP> with your EC2 instance’s public IP (from Step 1).
-
-Example:
-
-bash
-Copy
-Edit
-scp -i ~/Downloads/myblog-key.pem index.html ubuntu@52.201.123.45:/var/www/html/
-Screenshot:
-
-Your terminal showing an scp command in action and a successful transfer.
-
-4.4 Replace the Default Page
-Nginx serves whatever is named index.html in /var/www/html/.
-
-After you upload your index.html, it overwrites the default welcome page.
-
-4.5 Test Your Website
-In a browser, visit:
+4.4 Test Your Website
+In your web browser, go to:
 
 cpp
 Copy
 Edit
 http://<YOUR_PUBLIC_IP>
-You should now see your own homepage, not the Nginx default.
+You should now see your own homepage instead of the Apache2 “It works!” page.
 
-Screenshot:
+4.5 Common Troubleshooting
+Permission Denied?
 
-Browser window showing your own site live at your public IP.
-
-4.6 Uploading Updates
-If you change your site, repeat the SCP commands to upload new versions.
-
-🛠️ Troubleshooting
-Permission denied
-
-Make sure your .pem file permissions are set:
+Make sure your .pem file permissions are correct:
 
 bash
 Copy
 Edit
 chmod 400 ~/Downloads/myblog-key.pem
-Use sudo if you get “permission denied” errors on the server.
+Wrong page or not updated?
 
-File not found
+Refresh your browser (Ctrl+Shift+R).
 
-Check the path and filename in your SCP command.
+Double-check you uploaded files to /var/www/html/.
 
-Site not updated
+Errors or missing images?
 
-Refresh the browser or clear your cache.
-
-Make sure you uploaded to /var/www/html/ and not another folder.
+Make sure you uploaded all referenced files and folders.
 
 ⭐️ Tips
 You can upload multiple files at once:
@@ -111,9 +97,15 @@ bash
 Copy
 Edit
 scp -i ~/Downloads/myblog-key.pem *.html *.css *.js ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
-For large sites, upload the whole directory:
+If you have a lot of assets, upload your whole project folder:
 
 bash
 Copy
 Edit
 scp -i ~/Downloads/myblog-key.pem -r . ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
+(This uploads everything in the current directory to /var/www/html/.)
+
+Screenshot suggestions:
+Terminal running the scp command
+
+Browser showing your custom homepage at your public IP

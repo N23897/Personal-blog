@@ -58,7 +58,7 @@ Enter your domain to check if DNS points to your EC2 public IP worldwide
 
 ## Troubleshooting Common Problems
 
-**A. Browser says “Not Secure” or no padlock**
+**A. The browser says “Not Secure” or no padlock**
 
 - Use `https://` in the address bar
 - Reload/refresh the page, or clear browser cache
@@ -124,6 +124,7 @@ Share your site with friends or as part of your portfolio
 
 Set up analytics or backup solutions
 
+----
 ## References
 SSL Labs Test
 
@@ -132,4 +133,6 @@ whatsmydns.net
 Let’s Encrypt
 
 AWS EC2 Documentation
+
+-----
 

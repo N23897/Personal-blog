@@ -65,7 +65,7 @@ Update Apache2 to serve your site securely.
 
 You should see:
 
-```python-repl
+```bash
 Congratulations! You have successfully enabled https://yourdomain.com
 ```
 
@@ -73,7 +73,7 @@ Congratulations! You have successfully enabled https://yourdomain.com
 ## 6.5 Test HTTPS
 Visit your website in a browser:
 
-```arduino
+```bash
 https://yourdomain.com
 ```
 You should see your homepage with a padlock icon in the address bar.
@@ -125,7 +125,7 @@ sudo certbot renew --dry-run
 ## Next Steps
 If your site is secure with HTTPS, continue to Step 7 – Final Checks and Troubleshooting.
 
-
+---
 ## References
 Let’s Encrypt
 

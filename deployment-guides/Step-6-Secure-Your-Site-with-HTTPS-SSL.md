@@ -113,7 +113,7 @@ Port 443 errors
 
 Re-check AWS Security Group inbound rules for HTTPS.
 
-Certificate won’t renew
+The certificate won’t renew
 
 Manually test renewal with:
 

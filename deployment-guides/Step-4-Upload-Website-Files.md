@@ -109,8 +109,6 @@ Once your site is visible at your EC2 IP, continue to Step 5 – Set Up Your Dom
 ## References
 SCP Command Guide
 
----
-
 AWS EC2 Documentation
 
 ---

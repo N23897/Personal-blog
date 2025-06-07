@@ -40,12 +40,12 @@ Go to your AWS EC2 console, select Instances, and copy your instance’s Public 
 
 In your web browser, enter the following URL (replace with your public IP):
 
-```cpp
+```bash
 http://<YOUR_PUBLIC_IP>
 ```
 Example:
 
-```cpp
+```bash
 http://3.9.142.21
 ```
 
@@ -56,7 +56,7 @@ You should see the "Apache2 Ubuntu Default Page" with the message:
 ## 3.5 Where to Place Your Website Files
 By default, Apache2 serves files from this directory:
 
-```css
+```bash
 /var/www/html/
 ```
 
@@ -89,7 +89,10 @@ sudo systemctl start apache2
 ## 3.7 Next Steps
 Once Apache2 is running and you can see the default page in your browser, continue to Step 4 – Upload Website Files.
 
-References
+----
+## References
 Apache2 Documentation for Ubuntu
 
 AWS EC2 Getting Started
+
+---

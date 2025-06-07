@@ -95,8 +95,8 @@ All setup steps are included as Markdown files for easy following:
 
 ## License
 
-All website code and instructions are for educational purposes.  
-You’re welcome to use, adapt, or reference for your own learning or coursework.
+All website codes and instructions are for educational purposes.  
+You’re welcome to use, adapt, or reference for your own learning or personal project.
 
 ---
 
@@ -106,4 +106,4 @@ For questions, troubleshooting, or suggestions, open an Issue in this repo or co
 
 ---
 
-**Thank you for exploring! Deploy your story to the world—one cloud at a time.**
+**Thank you for exploring!**

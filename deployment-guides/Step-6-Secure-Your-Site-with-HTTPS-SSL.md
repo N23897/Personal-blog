@@ -3,7 +3,7 @@
 ## 6.1 Why Enable HTTPS?
 HTTPS (SSL/TLS) encrypts all data between your visitors and your site
 
-Makes your site safer and shows the 🔒 padlock in browsers
+Makes your site safer and shows the padlock in browsers
 
 Google prefers (and sometimes requires) HTTPS for ranking
 

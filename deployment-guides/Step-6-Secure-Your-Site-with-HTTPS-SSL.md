@@ -127,4 +127,3 @@ Let’s Encrypt: Getting Started
 Murdoch Uni: Obtain a Digital Certificate
 
 ---
-## You’re now live and secure with HTTPS! Your visitors will see the 🔒 padlock in their browser.

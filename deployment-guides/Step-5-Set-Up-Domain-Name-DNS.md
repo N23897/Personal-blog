@@ -1,89 +1,101 @@
-Step 5: Set Up Your Domain Name (DNS)
-5.1 Buy a Domain Name
-If you don’t already have a domain:
+# Step 5 – Set Up Your Domain Name (DNS)
 
-Go to a domain registrar like Namecheap, GoDaddy, or any you prefer.
+This step connects your custom domain (e.g., `yourblog.com`) to your EC2 server so anyone can access your site with an easy-to-remember web address.
 
-Search for a domain name (e.g., livinginbetweenblog.space) and complete the purchase.
+---
 
-Screenshot:
+## 5.1 Purchase a Domain Name
 
-Domain search or purchase confirmation page
+If you do not already own a domain:
 
-5.2 Open Your Domain’s DNS Settings
-Log in to your domain provider (e.g., Namecheap).
+- Buy one from a registrar such as [Namecheap](https://www.namecheap.com/), [GoDaddy](https://www.godaddy.com/), or any other provider.
 
-Go to the “Domain List” or “My Domains.”
+---
 
-Click “Manage” next to your domain.
+## 5.2 Access Your Domain’s DNS Settings
 
-Find the “Advanced DNS” or “DNS Settings” tab (sometimes “Host Records”).
+1. Log in to your registrar’s website.
+2. Go to your **Domain List** or **My Domains**.
+3. Click **Manage** next to your chosen domain.
+4. Find the section for **DNS settings**, **Advanced DNS**, or **Host Records**.
 
-Screenshot:
+---
 
-DNS settings or “Advanced DNS” screen
+## 5.3 Add or Edit the A Record
 
-5.3 Set the A Record to Point to Your EC2 Public IP
-Find the A Record for @ (the main domain).
+You need to point your domain to your EC2 instance’s public IP.
 
-If one exists, edit it. If not, add a new A Record.
+- Find the **A Record** for your domain root (`@`).  
+- **Edit** it if it exists, or **add** a new one.
 
-Host: @
+| Host | Type | Value (Destination)     | TTL         |
+|------|------|------------------------|-------------|
+| @    | A    | `<YOUR_PUBLIC_IP>`     | Automatic   |
 
-Value: your EC2 Public IPv4 address (from Step 1)
+**Example entry:**
 
-TTL: Leave as default (Automatic or 30 minutes is fine)
+| Host | Type | Value         | TTL       |
+|------|------|---------------|-----------|
+| @    | A    | 3.9.142.21    | Automatic |
 
-Save or confirm changes.
+*Replace `<YOUR_PUBLIC_IP>` with your actual EC2 IP address.*
 
-Screenshot:
+- Click **Save** or **Confirm**.
 
-A Record edit form with your EC2 IP entered
+---
 
-5.4 (Optional) Add an A Record for www
-To allow both yourdomain.com and www.yourdomain.com to work:
+## 5.4 (Optional) Add an A Record for “www”
 
-Add another A Record:
+To allow visitors to use both `yourdomain.com` and `www.yourdomain.com`, add:
 
-Host: www
+| Host | Type | Value (Destination)     | TTL         |
+|------|------|------------------------|-------------|
+| www  | A    | `<YOUR_PUBLIC_IP>`     | Automatic   |
 
-Value: your EC2 Public IPv4 address
+---
 
-Save.
+## 5.5 Wait for DNS Propagation
 
-5.5 Wait for DNS Propagation
-It may take 5 to 30 minutes for the new DNS settings to spread across the internet.
+- DNS updates usually take **5–30 minutes** but may be longer (up to 1–2 hours) for new domains.
 
-Sometimes, for new domains, it can take a few hours.
+---
 
-5.6 Test Your Domain
-In your browser, visit:
+## 5.6 Test Your Domain
 
-arduino
-Copy
-Edit
+In your browser, enter:
+
+```bash
 http://yourdomain.com
-You should see your website (the same as you saw at your server’s public IP).
+```
 
-Screenshot:
+- You should see your website (the same as you saw at your server’s public IP).
+- If not, wait a bit and try again.
 
-Browser with your site live at your domain
+---
 
-5.7 Troubleshooting
-Domain doesn’t work?
+## Troubleshooting
 
-Double-check the A Record points to your correct EC2 IP.
+- **Domain does not load your site?**
+  - Double-check your A Record points to your EC2 public IP.
+  - Wait for DNS propagation.
+  - Use [whatsmydns.net](https://www.whatsmydns.net/) to check propagation worldwide.
 
-Wait a bit longer, then refresh.
+- **Page loads at IP but not at domain?**
+  - Try a hard refresh, or clear your browser cache.
 
-Use a tool like whatsmydns.net to check DNS propagation worldwide.
+---
 
-Still not working?
+## Next Steps
 
-Try clearing your browser cache, or test on a different device/network.
+Once your domain shows your site, continue to  
+[Step 6 – Secure Your Website with HTTPS (SSL)](./Step-6-Secure-With-SSL.md).
 
-⭐️ Tips
-Only one A record per host (@ or www). Remove old or extra A records.
+---
 
-Use the registrar’s help section if the interface looks different.
+## References
 
+- [Namecheap DNS Management](https://www.namecheap.com/support/knowledgebase/category/43/domain-dns/)
+- [GoDaddy DNS Help](https://au.godaddy.com/help/manage-dns-zone-files-680)
+- [AWS EC2 Documentation](https://docs.aws.amazon.com/ec2/)
+
+---

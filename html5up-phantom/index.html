@@ -1,3 +1,20 @@
+<!--
+  index.html – Main Page for Living In Between Blog
+  Author: Nasrin Sadiqi, 2025 (Student ID: 34898644)
+  This is the homepage for my travel and personal blog.
+  Key features:
+    - Animated flower shower background (canvas + JS)
+    - Mood toggle button (random pastel backgrounds)
+    - Flip-clock countdown timer
+    - Interactive map with custom pins (Leaflet)
+    - Polaroid photo carousel
+    - Responsive design and menu
+    - Contact form (Formspree)
+    - Back to top button and dynamic fun fact
+  All custom styles are in custom.css, core layout in main.css,
+  and JS features in custom.js. See README for credits.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,27 +22,28 @@
   <title>Living In Between Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-  <!-- Stylesheets -->
+  <!-- Main and custom stylesheets for layout and custom features -->
   <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="custom.css" /> <!-- Custom styling for mood toggle, polaroids, etc -->
+  <link rel="stylesheet" href="custom.css" /> <!-- My own styling for mood toggle, carousel, etc -->
+  <!-- Decorative and readable fonts -->
   <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+  <!-- Leaflet CSS for interactive travel map -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 
 <body class="is-preload">
-  <!-- Background flower canvas (from custom.js) -->
+  <!-- Animated frangipani flower shower background (drawn with JS on this canvas) -->
   <canvas id="flower-canvas"></canvas>
 
-  <!-- Main Page Wrapper -->
+  <!-- Main page content wrapper (keeps layout centered and layered) -->
   <div id="wrapper">
 
-    <!-- Header -->
+    <!-- Site Header -->
     <header id="header">
       <div class="inner">
-        <!-- Logo (can be added if needed) -->
+        <!-- Logo placeholder (not used, but ready if needed) -->
         <a href="index.html" class="logo"></a>
-
-        <!-- Navigation -->
+        <!-- Top navigation and mood toggle button -->
         <nav>
           <ul>
             <li><a href="#menu">Menu</a></li>
@@ -35,7 +53,7 @@
       </div>
     </header>
 
-    <!-- Slide-Out Menu -->
+    <!-- Slide-out mobile menu -->
     <nav id="menu">
       <h2>Menu</h2>
       <ul>
@@ -50,20 +68,21 @@
     <div id="main">
       <div class="inner">
 
-        <!-- Dynamic fun fact + intro -->
+        <!-- Dynamic fun fact (JS inserts random fact here) -->
         <div id="fun-fact" style="margin:20px 0;font-style:italic;"></div>
 
+        <!-- Main site header and intro (typing effect happens in #typed-text) -->
         <header>
           <h2 id="typed-text"></h2>
           <p>Here I share my adventures, family recipes, and stories from everyday life. Make yourself at home—explore, connect, and join the journey!</p>
         </header>
 
-        <!-- Map Section -->
+        <!-- Map section: Interactive Leaflet travel map with custom pins -->
         <section>
           <h2>Places I've visited so far</h2>
           <div id="travel-map" style="height: 450px; border-radius: 12px; margin: 20px 0;"></div>
 
-          <!-- Countdown Section -->
+          <!-- Countdown timer section -->
           <h2>Next Trip Countdown</h2>
           <div id="countdown" class="flip-clock-horizontal">
             <div class="flip-unit"><div class="flip-card" id="days">00</div><span class="flip-label">Days</span></div>
@@ -77,8 +96,8 @@
         </section>
       </div>
     </div>
-         
-        <!-- Polaroid Carousel -->
+
+    <!-- Polaroid-style photo carousel (horizontally scrolling, infinite loop) -->
     <div class="polaroid-carousel">
       <div class="polaroid-track">
 
@@ -144,7 +163,7 @@
 
         <div class="polaroid large">
           <img src="images/IMG_8035.jpeg" alt="Airport">
-          <div class="caption multi-line">Took this pictures mainly bcs I didn't think I had taken enough.</div>
+          <div class="caption multi-line">Took this picture mainly bcs I didn't think I had taken enough.</div>
         </div>
 
         <div class="polaroid large">
@@ -164,7 +183,7 @@
 
         <div class="polaroid large">
           <img src="images/IMG_7914.jpeg" alt="Views">
-          <div class="caption multi-line">1am walks, so worth it!!.</div>
+          <div class="caption multi-line"> 1 am walks, so worth it!!.</div>
         </div>
 
         <div class="polaroid large">
@@ -180,15 +199,15 @@
       </div>
     </div>
   </section>
+ <!-- Back to top button (appears when scrolling down) -->
+    <button id="back-to-top" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;">⬆️ Top</button>
 
-   <!-- Back to top button -->
-  <button id="back-to-top" style="display:none;position:fixed;bottom:20px;right:20px;z-index:9999;">⬆️ Top</button>
-
-  <!-- Footer -->
+    <!-- Footer with contact form and social icons -->
     <footer id="footer">
       <div class="inner">
         <section>
           <h2>Get in touch</h2>
+          <!-- Contact form posts to Formspree for email delivery -->
           <form action="https://formspree.io/f/xovwvyzo" method="POST">
             <div class="fields">
               <div class="field half"><input type="text" name="name" placeholder="Name" required /></div>
@@ -199,14 +218,14 @@
           </form>
         </section>
 
-        <!-- Social Icons -->
+        <!-- Social media icons/links -->
         <section>
           <h2>Follow</h2>
           <a href="https://instagram.com/nasrin.s01/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
           <a href="https://github.com/N23897" target="_blank" class="icon brands style2 fa-github"><span class="label">GitHub</span></a>
         </section>
 
-        <!-- Copyright -->
+        <!-- Copyright notice and design credit -->
         <ul class="copyright">
           <li>&copy; 2025 Living In Between. All rights reserved.</li>
           <li>Design adapted from <a href="http://html5up.net">HTML5 UP</a></li>
@@ -215,29 +234,32 @@
     </footer>
   </div>
 
-  <!-- Scripts (all at bottom for fast load) -->
+  <!-- Scripts loaded at end for better speed -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="custom.js"></script> <!-- Custom JS: flower shower, countdown, mood toggle -->
+  <script src="custom.js"></script> <!-- My custom scripts: flower shower, mood toggle, countdown, etc. -->
 
-  <!-- Leaflet Map + Pins -->
+  <!-- Leaflet Map and Custom Pins -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
+    // Initialize Leaflet map, centered globally, no zoom controls for minimalist style
     const map = L.map('travel-map', {
       zoomControl: false,
       scrollWheelZoom: false,
       dragging: true
     }).setView([20.5, 100.5], 2.5);
 
+    // Set the map tile layer to a light, minimal style from CARTO
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
       subdomains: 'abcd',
       maxZoom: 19
     }).addTo(map);
 
+    // Custom map pin icon (flower icon from flaticon)
     const icon = new L.Icon({
       iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
       iconSize: [28, 28],
@@ -245,16 +267,17 @@
       popupAnchor: [0, -24]
     });
 
+    // List of travel stops for map pins (update as your journey grows!)
     const stops = [
-  { coords: [-33.868820, 151.209296], place: "Sydney", note: "Had a blast at Westpac Summit" },
-  { coords: [32.4279, 53.6880], place: "Iran", note: "The best breakfast food!! it was so good miss it heaps" },
-  { coords: [30.3753, 69.3451], place: "Pakistan", note: "Lahore & Karachi" },
-  { coords: [1.3521, 103.8198], place: "Singapore", note: "Stopover, street food" },
-  { coords: [-37.813628, 144.963058], place: "Melbourne", note: "Coffee capital" },
-  { coords: [36.5, 127.8], place: "South Korea", note: "Exchange adventure" }
-  ];
+      { coords: [-33.868820, 151.209296], place: "Sydney", note: "Had a blast at Westpac Summit" },
+      { coords: [32.4279, 53.6880], place: "Iran", note: "The best breakfast food!! it was so good miss it heaps" },
+      { coords: [30.3753, 69.3451], place: "Pakistan", note: "Lahore & Karachi" },
+      { coords: [1.3521, 103.8198], place: "Singapore", note: "Stopover, street food" },
+      { coords: [-37.813628, 144.963058], place: "Melbourne", note: "Coffee capital" },
+      { coords: [36.5, 127.8], place: "South Korea", note: "Exchange adventure" }
+    ];
 
-
+    // Loop through all stops and add a marker with popup for each
     stops.forEach(stop => {
       L.marker(stop.coords, { icon })
         .addTo(map)

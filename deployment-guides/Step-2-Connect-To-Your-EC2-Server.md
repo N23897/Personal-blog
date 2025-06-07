@@ -37,6 +37,20 @@ SSH requires the PEM file to have strict permissions:
 
 ```bash
 chmod 400 ~/Downloads/myblog-key.pem
+```
+---
+
+2.3.2 Connect to Your EC2 Instance
+Use the following command, replacing with your values:
+
+```bash
+ssh -i ~/Downloads/myblog-key.pem ubuntu@<YOUR_PUBLIC_IP>
+```
+
+example:
+```bash
+ssh -i ~/Downloads/myblog-key.pem ubuntu@13.211.120.10
+```
 
 
 

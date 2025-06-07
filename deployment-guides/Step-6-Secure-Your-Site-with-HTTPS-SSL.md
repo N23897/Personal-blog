@@ -50,9 +50,11 @@ Go to your EC2 instance’s Security Group in the AWS Console
 
 Make sure there is an inbound rule:
 
-    Type	            |    Protocol	    |      Port	    |        Source     |
-|---------------------|-----------------|---------------|-------------------|
-     HTTPS            |   	TCP	4       |      43	      |      0.0.0.0/0    |
+
+|   	  Type             |         Protocol	         |         Port	               |        Source           |
+|--------------------------|-----------------------------|-----------------------------|-------------------------|
+|      HTTPS               |        TCP	4                |           443	           |       0.0.0.0/0         | 
+
 
 (Needed for visitors to access your secure site)
 

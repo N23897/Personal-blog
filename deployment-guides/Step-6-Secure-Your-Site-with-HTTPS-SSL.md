@@ -122,6 +122,7 @@ sudo certbot renew --dry-run
 ```
 
 ---
+
 ## Next Steps
 If your site is secure with HTTPS, continue to Step 7 – Final Checks and Troubleshooting.
 
@@ -133,5 +134,4 @@ Certbot for Apache
 
 AWS EC2 Documentation
 
-
-
+----

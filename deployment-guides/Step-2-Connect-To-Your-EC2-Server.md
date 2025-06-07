@@ -78,7 +78,7 @@ You are now securely connected to your server!
 
 Continue with Step 3 – Install Apache2 Web Server.
 
-References
+References:
 
 AWS: Connect to your Linux instance using SSH
 

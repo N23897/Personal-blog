@@ -57,7 +57,7 @@ The first time, type yes if prompted about authenticity.
 You should now see a prompt like ubuntu@ip-xxx-xxx-xxx-xxx:~$
 
 ---
-2.4 Troubleshooting
+## Troubleshooting
 Permission denied (publickey):
 
 Ensure you ran chmod 400 on your PEM file.
@@ -73,17 +73,17 @@ Still stuck?
 Try connecting from the AWS browser interface (see 2.2).
 
 ---
-2.5 Next Steps
+## Next Steps
 You are now securely connected to your server!
 
 Continue with Step 3 – Install Apache2 Web Server.
 
-References:
+##References:
 
 AWS: Connect to your Linux instance using SSH
 
 Murdoch NetworkingLabs: ssh_keys.md
 
-Security Reminder:
+> **Security Reminder:**
 
-Never share your PEM key file or private IP addresses. Keep your key file secure at all times.
+> Never share your PEM key file or private IP addresses. Keep your key file secure at all times.

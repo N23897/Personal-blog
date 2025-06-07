@@ -1,210 +1,136 @@
-Step 6: Secure Your Website with HTTPS (SSL)
-Why Do You Need HTTPS?
-Security: Encrypts all information between your visitors and your website. No one can “listen in.”
+# Step 6 – Secure Your Site with HTTPS (SSL)
 
-Trust: Shows a padlock in the browser, so visitors know your site is safe.
+This step enables HTTPS on your website, showing a padlock icon and encrypting all traffic.  
+We use **Let’s Encrypt** (free SSL certificates) and **Certbot** (easy automation for Apache2).
 
-Better Google Ranking: Google ranks secure sites higher.
+---
 
-We will use Let’s Encrypt (a free, trusted certificate authority) and Certbot (an easy tool to get and install SSL certificates for you).
+## 6.1 Update Your Server
 
-6.1 Update Your Server (Always Do This First)
-Connect to your EC2 instance (see Step 2).
+Make sure your system is up to date before installing new software.
 
-In your terminal, run:
-
-bash
-Copy
-Edit
+```bash
 sudo apt update
 sudo apt upgrade -y
-What does this do?
+```
 
-Refreshes your server’s list of software and installs the latest updates.
+---
+## 6.2 Install Certbot and Apache2 Plugin
+Install Certbot and its Apache integration:
 
-Keeps your server secure and avoids errors when installing new programs.
-
-6.2 Install Certbot and the Apache2 Plugin
-Certbot helps you get and install SSL certificates. The Apache2 plugin lets Certbot automatically set up HTTPS for you.
-
-Run this in your server’s terminal:
-
-bash
-Copy
-Edit
+```bash
 sudo apt install certbot python3-certbot-apache -y
-This downloads and installs Certbot and its Apache integration.
+```
 
-It may take a minute or two.
+---
+## 6.3 Confirm Port 443 is Open (AWS Security Group)
+In the AWS EC2 console, select your instance.
 
-How to know it worked:
-You’ll see lines that say things like Setting up certbot..., and you’ll get your prompt back (ubuntu@...:~$).
+Under Security Groups, check Inbound rules.
 
-6.3 Make Sure Your Server’s Firewall (Security Group) Allows HTTPS
-Why?
-Apache needs to accept traffic on port 443 (the port for HTTPS).
+You must have a rule for:
 
-How:
-In the AWS EC2 console, click Instances in the left menu.
+|Type	      |   Protocol   |   Port     | 		Source      |
+|-----------|--------------|------------|-----------------|
+| HTTPS	    |    TCP       |   443	    | 	0.0.0.0/0     |
 
-Find your running instance.
+If missing, click Edit inbound rules and add it.
 
-In the details pane at the bottom, look for Security groups and click the group name (it’s a blue link).
-
-Click the Inbound rules tab.
-
-You need a rule that says:
-
-Type: HTTPS
-
-Port: 443
-
-Source: 0.0.0.0/0 (anywhere)
-
-If it’s not there, click Edit inbound rules → Add rule → fill as above → Save rules.
-
-6.4 Run Certbot to Get Your SSL Certificate
-Now, let’s request and install your SSL certificate.
-
+---
+## 6.4 Run Certbot to Obtain and Install an SSL Certificate
 In your EC2 terminal, run:
 
-bash
-Copy
-Edit
+```bash
 sudo certbot --apache
-Certbot will guide you through a few questions:
+```
 
-Email Address:
+You will be prompted for:
 
-It will ask:
+Email address: For SSL expiry/security notices.
 
-pgsql
-Copy
-Edit
-Enter email address (used for urgent renewal and security notices) (Enter 'c' to cancel):
-Type your real email and press Enter.
-Why? If your certificate is about to expire or there’s a problem, Let’s Encrypt will email you.*
+Agree to the terms: Type A and hit Enter.
 
-Agree to Terms of Service:
+Domain name(s): Enter your domain (e.g., yourdomain.com).
+Enter both with and without www (space-separated) if you set up both.
 
-It will ask:
+Redirect HTTP to HTTPS: Choose 2 (recommended).
 
-css
-Copy
-Edit
-(A)gree/(C)ancel:
-Type A and press Enter.
+Certbot will:
 
-Share Email with EFF:
+Prove you control the domain.
 
-It will ask:
+Obtain a free SSL certificate.
 
-mathematica
-Copy
-Edit
-Share your email with the Electronic Frontier Foundation? (Y)es/(N)o:
-You can type N (this does not affect SSL).
+Update Apache2 to serve your site securely.
 
-Enter Domain Name:
+You should see:
 
-It will ask:
-
-pgsql
-Copy
-Edit
-Please enter the domain name(s) you would like on your certificate (comma and/or space separated):
-Type your domain name (e.g., livinginbetweenblog.space).
-If you want both www.livinginbetweenblog.space and livinginbetweenblog.space to work securely, enter both, separated by a space.
-
-Choose the Site to Enable HTTPS For:
-
-If you see a list of sites, choose the number matching your site or press Enter for the default.
-
-Redirect HTTP to HTTPS?
-
-It will ask:
-
-pgsql
-Copy
-Edit
-Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
-1: No redirect - Make no further changes to the webserver configuration.
-2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for new sites, or if you're confident your site works on HTTPS.
-Type 2 and press Enter.
-Why? This is the most secure. Anyone visiting http:// will be sent to https://.*
-
-If everything works, Certbot will finish with:
-
-python-repl
-Copy
-Edit
+```python-repl
 Congratulations! You have successfully enabled https://yourdomain.com
-...
-Your site is now secure!
+```
 
-6.5 Test Your HTTPS Website
-In your browser, go to:
+---
+6.5 Test HTTPS
+Visit your website in a browser:
 
-arduino
-Copy
-Edit
+```arduino
 https://yourdomain.com
-You should see your website with a padlock icon in the address bar.
+```
+You should see your homepage with a padlock icon in the address bar.
 
-Click the padlock to view certificate details (should say “Let’s Encrypt”).
+----
+6.6 Check Auto-Renewal
+Let’s Encrypt certificates last 90 days, but Certbot auto-renews them.
 
-6.6 How SSL Auto-Renewal Works
-Let’s Encrypt certificates are valid for 90 days.
+To check the timer:
 
-Certbot sets up automatic renewal, so you don’t have to do anything.
-
-To check the status, run:
-
-bash
-Copy
-Edit
+```bash
 sudo systemctl status certbot.timer
-It should say active (waiting).
+```
+You should see active (waiting) in the output.
 
-6.7 Common Problems & Fixes
-A. Certbot errors like “Domain not found” or “Challenge failed”:
+----
+6.7 Troubleshooting
+Certbot: “Domain not found” or “Challenge failed”
 
-Make sure your DNS A record points to your EC2 IP.
+Make sure your DNS A Record is correct and propagated.
 
-Make sure DNS has finished propagating (can take up to 30 minutes after changes).
+Wait 30 minutes and try again if you just updated DNS.
 
-Wait and try again.
+No padlock / still “Not Secure”
 
-B. No padlock or “Not Secure”:
+Make sure you use https:// in the browser.
 
-Make sure you’re using https:// in your browser.
-
-Clear browser cache, or try Incognito/Private browsing.
-
-Check for typos in your domain.
+Clear cache or use Incognito mode.
 
 Restart Apache2 if needed:
 
-bash
-Copy
-Edit
+```bash
 sudo systemctl restart apache2
-C. Port 443 not open:
+```
 
-Check your AWS Security Group inbound rules (see 6.3).
+Port 443 errors
 
-D. Certificate won’t renew:
+Re-check AWS Security Group inbound rules for HTTPS.
 
-You can test manual renewal with:
+Certificate won’t renew
 
-bash
-Copy
-Edit
+Manually test renewal with:
+
+```bash
 sudo certbot renew --dry-run
-⭐️ Extra Tips
-You only need to do this process once per domain.
+```
 
-If you change your domain or add a subdomain, run Certbot again.
+---
+## 6.8 Next Steps
+If your site is secure with HTTPS, continue to Step 7 – Final Checks and Troubleshooting.
 
-You can always check your SSL certificate’s details by clicking the padlock in your browser.
+## References
+Let’s Encrypt
+
+Certbot for Apache
+
+AWS EC2 Documentation
+
+
 

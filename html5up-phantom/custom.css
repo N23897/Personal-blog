@@ -1,77 +1,95 @@
-/* Back to Top Button Styling */
+/*
+ * styles.css – Core Styles for Living In Between Blog
+ * Author: Nasrin Sadiqi, 2025 (Student ID: 34898644)
+ *
+ * This stylesheet provides all the layout, animation, and appearance
+ * rules for key interactive and visual features, including:
+ *   - Back to Top button
+ *   - Animated frangipani flower shower and emoji petals
+ *   - Countdown timer flip clock
+ *   - Polaroid photo carousel and captions
+ *   - Travel map
+ * 
+ * Each section is commented for clarity and learning purposes.
+ * See README for a summary and a link to the live website.
+ */
+
+
+/* === Back to Top Button Styling === */
 .et_pb_scroll_top.et-pb-icon {
-  background-color: #e6e6fa;
-  color: #6a5acd;
-  border-radius: 50%;
-  padding: 12px;
-  right: 20px;
-  bottom: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #e6e6fa;         /* Light purple background */
+  color: #6a5acd;                    /* Medium purple icon */
+  border-radius: 50%;                /* Makes button round */
+  padding: 12px;                     /* Space inside the button */
+  right: 20px;                       /* Fixed position from right */
+  bottom: 30px;                      /* Fixed position from bottom */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);  /* Subtle shadow for depth */
+  transition: background-color 0.3s ease, /* Smooth color change on hover */
+              transform 0.3s ease;        /* Smooth movement on hover */
 }
 
 .et_pb_scroll_top.et-pb-icon:hover {
-  background-color: #d8bfd8;
-  transform: translateY(-5px);
+  background-color: #d8bfd8;         /* Slightly darker on hover */
+  transform: translateY(-5px);       /* Raises button up on hover */
 }
 
-/* Flower Canvas Background */
+/* === Flower Canvas Background === */
 #flower-canvas {
-  position: fixed;
+  position: fixed;                   /* Fixes canvas to viewport */
   top: 0;
   left: 0;
-  pointer-events: none;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
+  pointer-events: none;              /* Allows clicks through the canvas */
+  z-index: 0;                        /* Places canvas behind other elements */
+  width: 100vw;                      /* Full viewport width */
+  height: 100vh;                     /* Full viewport height */
 }
 
-/* Emoji Petal Container */
+/* === Emoji Petal Container === */
 #petal-container {
-  position: fixed;
+  position: fixed;                   /* Fixed position for the container */
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
+  z-index: 0;                        /* Behind all main content */
+  pointer-events: none;              /* Not clickable */
+  overflow: hidden;                  /* Prevents overflow outside screen */
 }
 
 #petal-container span {
   position: absolute;
-  top: -40px;
-  font-size: 1.6rem;
-  opacity: 0.9;
-  color: #f3cce8;
-  animation: softFall linear infinite;
-  z-index: 0;
+  top: -40px;                        /* Starts petals just above the screen */
+  font-size: 1.6rem;                 /* Petal/emoji size */
+  opacity: 0.9;                      /* Slightly see-through */
+  color: #f3cce8;                    /* Light pink color for emoji petals */
+  animation: softFall linear infinite; /* Repeats falling animation */
+  z-index: 0;                        /* Behind main content */
 }
 
 @keyframes softFall {
   0% {
-    transform: translateY(0) rotate(0deg);
+    transform: translateY(0) rotate(0deg);   /* Start at top, no rotation */
     opacity: 0.8;
   }
   100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
+    transform: translateY(100vh) rotate(360deg); /* Fall to bottom, full rotation */
+    opacity: 0;                                 /* Fade out at bottom */
   }
 }
 
-/* Ensure content sits above background petals */
+/* === Ensure content sits above background petals/canvas === */
 #wrapper {
   position: relative;
-  z-index: 10;
+  z-index: 10;                        /* Raises main content above canvas/petals */
 }
 
-/* Countdown Clock Styles */
+/* === Countdown Clock Styles (Flip Clock) === */
 .flip-clock-horizontal {
   display: flex !important;
   flex-direction: row !important;
   justify-content: center;
   align-items: flex-end;
-  gap: 18px;
+  gap: 18px;                          /* Space between time units */
   font-family: 'Quicksand', Arial, sans-serif;
 }
 
@@ -79,20 +97,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 65px;
+  min-width: 65px;                    /* Ensures even spacing */
 }
 
 .flip-card {
   font-size: 2.4rem;
   font-family: 'Courier New', Courier, monospace;
-  background: #080808;
+  background: #080808;                /* Dark background for contrast */
   color: #fff;
-  width: 100px;
+  width: 100px;                       /* Size of each flip card */
   height: 109px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 12px;                /* Rounded corners */
   margin-bottom: 2px;
 }
 
@@ -104,7 +122,7 @@
 }
 
 .flip-colon {
-  font-size: 2.8rem;
+  font-size: 2.8rem;                  /* Larger colon for clarity */
   color: #b3b3b3;
   margin: 0 6px 15px 6px;
   display: flex;
@@ -114,32 +132,32 @@
   font-weight: 600;
 }
 
-/* Polaroid Carousel Layout */
+/* === Polaroid Carousel Layout === */
 .polaroid-carousel {
-  overflow: hidden;
+  overflow: hidden;                   /* Hides overflow outside carousel area */
   position: relative;
-  width: 100vw;
-  padding: 20px 0;
+  width: 100vw;                       /* Full viewport width */
+  padding: 20px 0;                    /* Space above/below */
 }
 
 .polaroid-track {
-  display: flex;
-  gap: 40px;
-  width: max-content;
-  animation: scroll-loop 80s linear infinite;
+  display: flex;                      /* Horizontal arrangement */
+  gap: 40px;                          /* Space between polaroids */
+  width: max-content;                 /* Only as wide as content */
+  animation: scroll-loop 80s linear infinite; /* Slow continuous scroll */
 }
 
 .polaroid-carousel:hover .polaroid-track {
-  animation-play-state: paused;
+  animation-play-state: paused;       /* Pause animation on hover */
 }
 
-/* Individual Polaroid Styling */
+/* === Individual Polaroid Styling === */
 .polaroid {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(60, 60, 90, 0.10);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.14), 0 2px 8px rgba(60,60,90,0.10);
   padding: 13px 13px 40px 13px;
-  flex: 0 0 auto;
+  flex: 0 0 auto;                     /* Prevent shrinking/growing */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,16 +167,16 @@
   width: auto;
 }
 
-/* Image Sizing */
+/* === Image Sizing for Polaroids === */
 .polaroid img {
   width: 530px;
   height: 420px;
-  object-fit: cover;
+  object-fit: cover;                  /* Ensures image covers area without distortion */
   border-radius: 16px;
   margin-bottom: 18px;
 }
 
-/* Caption Base Styling */
+/* === Caption Base Styling for Polaroid === */
 .polaroid .caption {
   position: absolute;
   bottom: 0;
@@ -168,29 +186,29 @@
   text-align: center;
   font-family: 'Pacifico', 'Quicksand', cursive, sans-serif;
   color: #2d2e3e;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255,255,255,0.95); /* Semi-opaque white background */
   border-bottom-left-radius: 13px;
   border-bottom-right-radius: 13px;
   box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;            /* Truncate if too long */
 }
 
-/* Multi-line Caption Support */
+/* === Multi-line Caption Support === */
 .caption.multi-line {
   font-size: 1.25rem;
-  white-space: normal;
+  white-space: normal;                /* Allow caption to wrap */
 }
 
-/* Scroll Animation for Carousel */
+/* === Scroll Animation for Carousel === */
 @keyframes scroll-loop {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to   { transform: translateX(-50%); }
 }
 
-/* Travel Map Styling */
+/* === Travel Map Styling === */
 #travel-map {
-  border: 2px solid #d9cfff;
-  box-shadow: 0 12px 24px rgba(180, 150, 255, 0.1);
+  border: 2px solid #d9cfff;         /* Light purple border */
+  box-shadow: 0 12px 24px rgba(180,150,255,0.1); /* Subtle drop shadow */
 }

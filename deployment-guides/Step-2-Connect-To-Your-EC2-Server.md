@@ -14,7 +14,7 @@ This guide explains how to securely connect to your running EC2 instance using S
 
 ## 2.2 Option A: Connect Using AWS Web Browser (EC2 Instance Connect)
 
-This is the easiest way for beginners—no command line required.
+This is the easiest way for beginners—no command line is required.
 
 1. Open the [AWS EC2 Console](https://console.aws.amazon.com/ec2) and select **Instances**.
 2. Tick the checkbox for your instance.
@@ -78,11 +78,14 @@ You are now securely connected to your server!
 
 Continue with Step 3 – Install Apache2 Web Server.
 
+----
 ##References:
 
 AWS: Connect to your Linux instance using SSH
 
 Murdoch NetworkingLabs: ssh_keys.md
+
+---
 
 > **Security Reminder:**
 

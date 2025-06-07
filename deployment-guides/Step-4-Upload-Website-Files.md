@@ -1,111 +1,112 @@
-Step 4: Upload Your Website Files to Apache2
-Now that Apache2 is running, it’s time to put your actual website files on the server so the world can see your site.
+# Step 4 – Upload Your Website Files to Apache2
 
-4.1 Where to Upload Your Files
-The folder Apache2 uses to serve web pages is:
+Now that Apache2 is running, you can upload your website’s files (HTML, CSS, JS, images, etc.) so they are visible to the world.
 
-css
-Copy
-Edit
+---
+
+## 4.1 Where to Upload Files
+
+Apache2 serves content from:
+
+```bash
 /var/www/html/
-Anything you put here becomes public on your website!
+```
 
-4.2 Prepare Your Website Files
-On your own computer, make sure you have all your website files ready, such as:
+Place all your website files (e.g., `index.html`, `custom.css`, `custom.js`, `/images`) in this directory.
 
-index.html
+---
 
-custom.css
+## 4.2 Prepare Your Website Files
 
-custom.js
+On your computer, make sure you have all the files you want to upload:
+- `index.html`
+- `custom.css`
+- `custom.js`
+- `/images` folder (if you have images)
+- Any other files for your site
 
-an /images folder (if you have images)
+---
 
-any other pages or assets
+## 4.3 Upload Files Using SCP
 
-4.3 Use SCP (Secure Copy) to Upload Files
-SCP lets you copy files from your computer to your AWS server using your .pem key.
+SCP (“secure copy”) lets you copy files from your computer to your EC2 server using your `.pem` key.
 
-a) Open Terminal on Your Computer
-On macOS or Linux: Use the built-in Terminal app.
+**Open Terminal (macOS/Linux) or Git Bash (Windows) and use these commands:**
 
-On Windows: Use Git Bash or Windows Terminal.
+### a) Change to Your Website Directory
 
-b) Navigate to Your Files’ Folder
-For example, if your files are in Downloads/mywebsite, use:
+```bash
+cd /path/to/your/website/files
+```
+(Replace with your actual file location.)
 
-bash
-Copy
-Edit
-cd ~/Downloads/mywebsite
-(Change the path as needed.)
+b) Upload Files
+Upload each file:
 
-c) Copy Files to the Server
-Use this command for each file (replace paths and filenames as needed):
-
-bash
-Copy
-Edit
+```bash
 scp -i ~/Downloads/myblog-key.pem index.html ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
 scp -i ~/Downloads/myblog-key.pem custom.css ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
 scp -i ~/Downloads/myblog-key.pem custom.js ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
-Replace myblog-key.pem with your key file name.
+```
+To upload a folder (like images):
 
-Replace <YOUR_PUBLIC_IP> with your EC2 public IP.
-
-To upload a whole folder (like images), use the -r flag:
-
-bash
-Copy
-Edit
+```bash
 scp -i ~/Downloads/myblog-key.pem -r images ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
-d) Overwrite the Default File
-Your new index.html will replace the default Apache2 page.
+```
+Replace myblog-key.pem and <YOUR_PUBLIC_IP> with your actual PEM file and instance public IP.
 
-4.4 Test Your Website
-In your web browser, go to:
+c) Overwrite the Default File
+Uploading your index.html will replace the default Apache2 page.
 
-cpp
-Copy
-Edit
+---
+#4.4 Test Your Website
+In your browser, visit:
+
+```cpp
 http://<YOUR_PUBLIC_IP>
-You should now see your own homepage instead of the Apache2 “It works!” page.
+```
+Replace <YOUR_PUBLIC_IP> with your instance’s actual IP address.
 
-4.5 Common Troubleshooting
-Permission Denied?
+You should now see your own homepage instead of the default “It works!” page.
 
-Make sure your .pem file permissions are correct:
+---
+#4.5 Troubleshooting
+Permission denied:
 
-bash
-Copy
-Edit
+Make sure your .pem file is set to strict permissions:
+
+```bash
 chmod 400 ~/Downloads/myblog-key.pem
-Wrong page or not updated?
+```
+Page not updating:
 
-Refresh your browser (Ctrl+Shift+R).
+Hard refresh your browser (Ctrl+Shift+R or Cmd+Shift+R).
 
 Double-check you uploaded files to /var/www/html/.
 
-Errors or missing images?
+Missing images/CSS/JS:
 
-Make sure you uploaded all referenced files and folders.
+Make sure all folders (like /images) and referenced files are uploaded.
 
-⭐️ Tips
-You can upload multiple files at once:
+---
+#4.6 Tips
+Upload multiple files at once:
 
-bash
-Copy
-Edit
+```bash
 scp -i ~/Downloads/myblog-key.pem *.html *.css *.js ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
-If you have a lot of assets, upload your whole project folder:
+```
+Upload the entire website folder:
 
-bash
-Copy
-Edit
+```bash
 scp -i ~/Downloads/myblog-key.pem -r . ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
-(This uploads everything in the current directory to /var/www/html/.)
+```
+---
+#4.7 Next Steps
+Once your site is visible at your EC2 IP, continue to Step 5 – Set Up Your Domain Name (DNS).
 
-Screenshot suggestions:
-Terminal running the scp command
 
-Browser showing your custom homepage at your public IP
+References
+SCP Command Guide
+
+AWS EC2 Documentation
+

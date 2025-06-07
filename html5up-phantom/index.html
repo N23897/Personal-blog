@@ -35,7 +35,7 @@
   <!-- Animated frangipani flower shower background (drawn with JS on this canvas) -->
   <canvas id="flower-canvas"></canvas>
 
-  <!-- Main page content wrapper (keeps layout centered and layered) -->
+  <!-- Main page content wrapper (keeps layout centred and layered) -->
   <div id="wrapper">
 
     <!-- Site Header -->
@@ -234,7 +234,7 @@
     </footer>
   </div>
 
-  <!-- Scripts loaded at end for better speed -->
+  <!-- Scripts loaded at the end for better speed -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
@@ -245,7 +245,7 @@
   <!-- Leaflet Map and Custom Pins -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    // Initialize Leaflet map, centered globally, no zoom controls for minimalist style
+    // Initialize Leaflet map, centred globally, no zoom controls for minimalist style
     const map = L.map('travel-map', {
       zoomControl: false,
       scrollWheelZoom: false,
@@ -259,7 +259,7 @@
       maxZoom: 19
     }).addTo(map);
 
-    // Custom map pin icon (flower icon from flaticon)
+    // Custom map pin icon (flower icon from Flaticon)
     const icon = new L.Icon({
       iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
       iconSize: [28, 28],
@@ -277,7 +277,7 @@
       { coords: [36.5, 127.8], place: "South Korea", note: "Exchange adventure" }
     ];
 
-    // Loop through all stops and add a marker with popup for each
+    // Loop through all stops and add a marker with a popup for each
     stops.forEach(stop => {
       L.marker(stop.coords, { icon })
         .addTo(map)

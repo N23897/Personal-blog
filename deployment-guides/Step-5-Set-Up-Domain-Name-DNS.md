@@ -28,15 +28,16 @@ You need to point your domain to your EC2 instance’s public IP.
 - Find the **A Record** for your domain root (`@`).  
 - **Edit** it if it exists, or **add** a new one.
 
-| Host | Type | Value (Destination)     | TTL         |
-|------|------|------------------------|-------------|
-| @    | A    | `<YOUR_PUBLIC_IP>`     | Automatic   |
+|    Host          |         Type            |       Value (Destination)       |         TTL            |
+|------------------|-------------------------|---------------------------------|------------------------|
+|     @            |         A               |       `<YOUR_PUBLIC_IP>`        |       Automatic        |              
 
 **Example entry:**
 
-| Host | Type | Value         | TTL       |
-|------|------|---------------|-----------|
-| @    | A    | 3.9.142.21    | Automatic |
+|    Host          |         Type            |       Value (Destination)       |         TTL            |
+|------------------|-------------------------|---------------------------------|------------------------|
+|     @            |         A               |          3.9.142.21`             |       Automatic        |              
+
 
 *Replace `<YOUR_PUBLIC_IP>` with your actual EC2 IP address.*
 
@@ -48,9 +49,10 @@ You need to point your domain to your EC2 instance’s public IP.
 
 To allow visitors to use both `yourdomain.com` and `www.yourdomain.com`, add:
 
-| Host | Type | Value (Destination)     | TTL         |
-|------|------|------------------------|-------------|
-| www  | A    | `<YOUR_PUBLIC_IP>`     | Automatic   |
+
+|    Host          |         Type            |       Value (Destination)          |         TTL            |
+|------------------|-------------------------|------------------------------------|------------------------|
+|     www          |          A               |        `<YOUR_PUBLIC_IP>`         |       Automatic        |     
 
 ---
 
@@ -68,7 +70,7 @@ In your browser, enter:
 http://yourdomain.com
 ```
 
-- You should see your website (the same as you saw at your server’s public IP).
+- You should see your website (the same as you saw on your server’s public IP).
 - If not, wait a bit and try again.
 
 ---

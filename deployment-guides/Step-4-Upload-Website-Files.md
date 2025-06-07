@@ -59,7 +59,7 @@ c) Overwrite the Default File
 Uploading your index.html will replace the default Apache2 page.
 
 ---
-#4.4 Test Your Website
+##4.4 Test Your Website
 In your browser, visit:
 
 ```cpp

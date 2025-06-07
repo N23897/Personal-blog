@@ -1,137 +1,128 @@
-# Step 6 – Secure Your Site with HTTPS (SSL)
+# Step 6: Secure Your Site with HTTPS (SSL)
+---
+## 6.1 Why Enable HTTPS?
+HTTPS (SSL/TLS) encrypts all data between your visitors and your site
 
-This step enables HTTPS on your website, showing a padlock icon and encrypting all traffic.  
-We use **Let’s Encrypt** (free SSL certificates) and **Certbot** (easy automation for Apache2).
+Makes your site safer and shows the 🔒 padlock in browsers
+
+Google prefers (and sometimes requires) HTTPS for ranking
 
 ---
+## 6.2 Prerequisites
+Your site is running on your EC2 Ubuntu server and is publicly accessible
 
-## 6.1 Update Your Server
+Apache2 is installed and serving your content
 
-Make sure your system is up to date before installing new software.
+DNS A record is set up, and your domain (e.g., yourdomain.com) points to your server’s IP
+
+You can access your site using your domain in a browser
+
+----
+## 6.3 Install Snap and Certbot
+Certbot (the tool that handles SSL for us) is best installed via Snap.
 
 ```bash
 sudo apt update
-sudo apt upgrade -y
+sudo apt install snapd -y
+sudo snap install core; sudo snap refresh core
 ```
+(Installs Snap and its core utilities)
 
----
-## 6.2 Install Certbot and Apache2 Plugin
-Install Certbot and its Apache integration:
+Remove old Certbot if it exists:
 
 ```bash
-sudo apt install certbot python3-certbot-apache -y
+sudo apt remove certbot
+```
+Install Certbot using Snap:
+
+```bash
+sudo snap install --classic certbot
+```
+Link Certbot so you can run it directly:
+
+```bash
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
 ---
-## 6.3 Confirm Port 443 is Open (AWS Security Group)
-In the AWS EC2 console, select your instance.
+6.4 Open HTTPS (Port 443) in AWS
+Go to your EC2 instance’s Security Group in the AWS Console
 
-Under Security Groups, check Inbound rules.
+Make sure there is an inbound rule:
 
-You must have a rule for:
+    Type	            |    Protocol	    |      Port	    |        Source     |
+|---------------------|-----------------|---------------|-------------------|
+     HTTPS            |   	TCP	4       |      43	      |      0.0.0.0/0    |
 
-|Type	      |   Protocol   |   Port     | 		Source      |
-|-----------|--------------|------------|-----------------|
-| HTTPS	    |    TCP       |   443	    | 	0.0.0.0/0     |
-
-If missing, click Edit inbound rules and add it.
+(Needed for visitors to access your secure site)
 
 ---
-## 6.4 Run Certbot to Obtain and Install an SSL Certificate
-In your EC2 terminal, run:
+## 6.5 Request and Install Your Free SSL Certificate
+Run Certbot with Apache integration (this will update Apache for you):
 
 ```bash
 sudo certbot --apache
 ```
+Enter your email address (for important SSL expiry reminders)
 
-You will be prompted for:
+Agree to the terms (type A)
 
-Email address: For SSL expiry/security notices.
+Enter your domain(s) when prompted (e.g., yourdomain.com and www.yourdomain.com)
 
-Agree to the terms: Type A and hit Enter.
-
-Domain name(s): Enter your domain (e.g., yourdomain.com).
-Enter both with and without www (space-separated) if you set up both.
-
-Redirect HTTP to HTTPS: Choose 2 (recommended).
+Choose to redirect HTTP to HTTPS when asked (recommended)
 
 Certbot will:
 
-Prove you control the domain.
+Prove you own the domain
 
-Obtain a free SSL certificate.
+Automatically configure Apache for HTTPS
 
-Update Apache2 to serve your site securely.
-
-You should see:
-
-```bash
-Congratulations! You have successfully enabled https://yourdomain.com
-```
+Install your SSL certificate
 
 ---
-## 6.5 Test HTTPS
-Visit your website in a browser:
-
-```bash
+## 6.6 Test Your Site
+In your browser, visit:
 https://yourdomain.com
-```
-You should see your homepage with a padlock icon in the address bar.
 
-----
-## 6.6 Check Auto-Renewal
-Let’s Encrypt certificates last 90 days, but Certbot auto-renews them.
+You should see the padlock icon and your site will load securely
 
-To check the timer:
+6.7 Auto-Renewal and Manual Renewal
+Let’s Encrypt certificates last for 90 days. Certbot sets up auto-renewal for you.
+
+Check if the renewal timer is active:
 
 ```bash
-sudo systemctl status certbot.timer
+sudo systemctl status snap.certbot.renew.timer
 ```
-You should see active (waiting) in the output.
+To renew manually (or test renewal), run:
+
+```bash
+sudo certbot renew
+```
 
 ----
 ## Troubleshooting
-Certbot: “Domain not found” or “Challenge failed”
+Error: “Domain not found” or challenge fails
 
-Make sure your DNS A Record is correct and propagated.
+Double-check your DNS A record and wait for propagation (up to 30 min)
 
-Wait 30 minutes and try again if you just updated DNS.
+Still “Not Secure”
 
-No padlock / still “Not Secure”
+Use the Incognito window or clear your browser cache
 
-Make sure you use https:// in the browser.
+Confirm you selected redirect during Certbot setup
 
-Clear cache or use Incognito mode.
+HTTPS/443 not working
 
-Restart Apache2 if needed:
-
-```bash
-sudo systemctl restart apache2
-```
-
-Port 443 errors
-
-Re-check AWS Security Group inbound rules for HTTPS.
-
-The certificate won’t renew
-
-Manually test renewal with:
-
-```bash
-sudo certbot renew --dry-run
-```
-
----
-
-## Next Steps
-If your site is secure with HTTPS, continue to Step 7 – Final Checks and Troubleshooting.
-
----
-## References
-Let’s Encrypt
-
-Certbot for Apache
-
-AWS EC2 Documentation
+Make sure port 443 is open in the AWS Security Group
 
 ----
+## References
+Certbot: Apache on Ubuntu with Snap
+
+Let’s Encrypt: Getting Started
+
+Murdoch Uni: Obtain a Digital Certificate
+
+
+You’re now live and secure with HTTPS! Your visitors will see the 🔒 padlock in their browser.

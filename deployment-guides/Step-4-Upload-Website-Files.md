@@ -70,7 +70,7 @@ Replace <YOUR_PUBLIC_IP> with your instance’s actual IP address.
 You should now see your own homepage instead of the default “It works!” page.
 
 ---
-#4.5 Troubleshooting
+#Troubleshooting
 Permission denied:
 
 Make sure your .pem file is set to strict permissions:
@@ -89,7 +89,7 @@ Missing images/CSS/JS:
 Make sure all folders (like /images) and referenced files are uploaded.
 
 ---
-#4.6 Tips
+#Tips
 Upload multiple files at once:
 
 ```bash
@@ -101,11 +101,11 @@ Upload the entire website folder:
 scp -i ~/Downloads/myblog-key.pem -r . ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
 ```
 ---
-#4.7 Next Steps
+#Next Steps
 Once your site is visible at your EC2 IP, continue to Step 5 – Set Up Your Domain Name (DNS).
 
 
-References
+#References
 SCP Command Guide
 
 AWS EC2 Documentation

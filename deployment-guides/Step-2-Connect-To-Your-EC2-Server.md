@@ -75,10 +75,12 @@ Try connecting from the AWS browser interface (see 2.2).
 ---
 2.5 Next Steps
 You are now securely connected to your server!
+
 Continue with Step 3 – Install Apache2 Web Server.
 
 References
 AWS: Connect to your Linux instance using SSH
+
 Murdoch NetworkingLabs: ssh_keys.md
 
 Security Reminder:

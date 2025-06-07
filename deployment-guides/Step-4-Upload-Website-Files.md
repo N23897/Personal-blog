@@ -102,7 +102,7 @@ scp -i ~/Downloads/myblog-key.pem -r . ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
 ```
 
 ---
-Next Steps
+## Next Steps
 Once your site is visible at your EC2 IP, continue to Step 5 – Set Up Your Domain Name (DNS).
 
 ---

@@ -70,7 +70,7 @@ Congratulations! You have successfully enabled https://yourdomain.com
 ```
 
 ---
-6.5 Test HTTPS
+## 6.5 Test HTTPS
 Visit your website in a browser:
 
 ```arduino
@@ -79,7 +79,7 @@ https://yourdomain.com
 You should see your homepage with a padlock icon in the address bar.
 
 ----
-6.6 Check Auto-Renewal
+## 6.6 Check Auto-Renewal
 Let’s Encrypt certificates last 90 days, but Certbot auto-renews them.
 
 To check the timer:
@@ -90,7 +90,7 @@ sudo systemctl status certbot.timer
 You should see active (waiting) in the output.
 
 ----
-6.7 Troubleshooting
+## Troubleshooting
 Certbot: “Domain not found” or “Challenge failed”
 
 Make sure your DNS A Record is correct and propagated.
@@ -122,8 +122,9 @@ sudo certbot renew --dry-run
 ```
 
 ---
-## 6.8 Next Steps
+## Next Steps
 If your site is secure with HTTPS, continue to Step 7 – Final Checks and Troubleshooting.
+
 
 ## References
 Let’s Encrypt

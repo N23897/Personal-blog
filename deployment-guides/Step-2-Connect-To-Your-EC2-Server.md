@@ -38,7 +38,7 @@ SSH requires the PEM file to have strict permissions:
 ```bash
 chmod 400 ~/Downloads/myblog-key.pem
 ```
----
+
 
 2.3.2 Connect to Your EC2 Instance
 Use the following command, replacing with your values:
@@ -47,10 +47,39 @@ Use the following command, replacing with your values:
 ssh -i ~/Downloads/myblog-key.pem ubuntu@<YOUR_PUBLIC_IP>
 ```
 
-example:
+Example:
 ```bash
 ssh -i ~/Downloads/myblog-key.pem ubuntu@13.211.120.10
 ```
 
+The first time, type yes if prompted about authenticity.
 
+You should now see a prompt like ubuntu@ip-xxx-xxx-xxx-xxx:~$
 
+---
+2.4 Troubleshooting
+Permission denied (publickey):
+
+Ensure you ran chmod 400 on your PEM file.
+
+Double-check your username (ubuntu) and public IP.
+
+Connection timed out:
+
+Check your AWS Security Group allows inbound SSH (port 22).
+
+Still stuck?
+
+Try connecting from the AWS browser interface (see 2.2).
+
+---
+2.5 Next Steps
+You are now securely connected to your server!
+Continue with Step 3 – Install Apache2 Web Server.
+
+References
+AWS: Connect to your Linux instance using SSH
+Murdoch NetworkingLabs: ssh_keys.md
+
+Security Reminder:
+Never share your PEM key file or private IP addresses. Keep your key file secure at all times.

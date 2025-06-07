@@ -59,7 +59,7 @@ c) Overwrite the Default File
 Uploading your index.html will replace the default Apache2 page.
 
 ---
-##4.4 Test Your Website
+## 4.4 Test Your Website
 In your browser, visit:
 
 ```cpp
@@ -70,7 +70,7 @@ Replace <YOUR_PUBLIC_IP> with your instance’s actual IP address.
 You should now see your own homepage instead of the default “It works!” page.
 
 ---
-Troubleshooting
+## Troubleshooting
 Permission denied:
 
 Make sure your .pem file is set to strict permissions:
@@ -89,7 +89,7 @@ Missing images/CSS/JS:
 Make sure all folders (like /images) and referenced files are uploaded.
 
 ---
-Tips
+## Tips
 Upload multiple files at once:
 
 ```bash
@@ -105,7 +105,7 @@ Next Steps
 Once your site is visible at your EC2 IP, continue to Step 5 – Set Up Your Domain Name (DNS).
 
 
-References
+## References
 SCP Command Guide
 
 AWS EC2 Documentation

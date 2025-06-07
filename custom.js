@@ -1,4 +1,22 @@
+/*
+ * custom.js - Main JavaScript for Living In Between blog
+ * Author: Nasrin Sadiqi, 2025
+ * Student ID: 34898644
+ * 
+ * Provides interactive features:
+ *  - Animated falling flowers (canvas)
+ *  - Mood toggle (random pastel background)
+ *  - Countdown timer to next trip
+ *  - Typing welcome animation
+ *  - Random fun fact display
+ *  - Back to Top button logic
+ * 
+ * This file contains original code and adapted open-source snippets,
+ * all heavily commented to indicate my modifications and logic.
+ */
+
 // Mood Toggle
+// My own code to change the body background to a random pastel colour
 function getRandomPastel() {
   const h = Math.floor(Math.random() * 360);
   const s = 70 + Math.random() * 10; // 70–80%
@@ -9,13 +27,14 @@ function getRandomPastel() {
 function toggleMood() {
   const pastel = getRandomPastel();
   document.body.style.background = pastel;
-  // Optional: update other elements for accent color if you want
+  // Optional: update other elements for accent colour if you want
 }
 
 document.getElementById('toggle-mood-btn').onclick = toggleMood;
 
 
 // Countdown Script
+// Original logic by Nasrin Sadiqi
 function pad(n) { return n < 10 ? '0' + n : n; }
 const endDate = new Date("2025-09-20T00:00:00");
 
@@ -29,6 +48,7 @@ function updateUnit(id, value) {
   }
 }
 
+//logic for updating countdown
 function updateCountdown() {
   const now = new Date();
   const diff = endDate - now;
@@ -51,7 +71,9 @@ updateCountdown();
 
 // Flower Shower Canvas Animation
 // === Frangipani Flower Shower (PNG with Transparent Background) ===
+// Adapted and customized from HTML5 canvas animation tutorials
 
+ // My own code to animate frangipani petals across the background
 const flowerImg = new Image();
 flowerImg.src = 'images/frangipani.png'; // path to your transparent PNG
 
@@ -99,13 +121,17 @@ if (canvas) {
   flowerImg.onload = drawPetals;
 }
 
+
+// ---- Typing Animation for Welcome ----
+// Adapted and improved from an open-source typing effect
 const phrases = [
   "Welcome to my travel & life blog.",
   "Discover recipes, stories, and adventures.",
   "Let's explore together!"
 ];
 let p = 0, c = 0;
-function typeEffect() {
+function typeEffect() { 
+  //typing logic here
   const el = document.getElementById("typed-text");
   if (!el) return;
   el.textContent = phrases[p].slice(0, c++);

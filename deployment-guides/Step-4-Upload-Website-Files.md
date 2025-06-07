@@ -62,7 +62,7 @@ Uploading your index.html will replace the default Apache2 page.
 ## 4.4 Test Your Website
 In your browser, visit:
 
-```cpp
+```bash
 http://<YOUR_PUBLIC_IP>
 ```
 Replace <YOUR_PUBLIC_IP> with your instance’s actual IP address.
@@ -100,13 +100,15 @@ Upload the entire website folder:
 ```bash
 scp -i ~/Downloads/myblog-key.pem -r . ubuntu@<YOUR_PUBLIC_IP>:/var/www/html/
 ```
+
 ---
 Next Steps
 Once your site is visible at your EC2 IP, continue to Step 5 – Set Up Your Domain Name (DNS).
 
-
+---
 ## References
 SCP Command Guide
 
 AWS EC2 Documentation
 
+---

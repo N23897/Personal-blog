@@ -53,7 +53,7 @@ Make sure there is an inbound rule:
 
 |   	  Type               |         Protocol	       |         Port	               |        Source           |
 |--------------------------|-------------------------|-----------------------------|-------------------------|
-|      HTTPS               |        TCP	             |           443	             |       0.0.0.0/0         | 
+|       HTTPS              |           TCP	         |          443	               |       0.0.0.0/0         | 
 
 
 (Needed for visitors to access your secure site)
@@ -126,5 +126,5 @@ Let’s Encrypt: Getting Started
 
 Murdoch Uni: Obtain a Digital Certificate
 
-
-You’re now live and secure with HTTPS! Your visitors will see the 🔒 padlock in their browser.
+---
+## You’re now live and secure with HTTPS! Your visitors will see the 🔒 padlock in their browser.

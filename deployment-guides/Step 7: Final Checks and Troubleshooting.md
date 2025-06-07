@@ -1,107 +1,135 @@
-Step 7: Final Checks and Troubleshooting
-After all your hard work, let’s make sure your website is live, secure, and fully working for anyone in the world.
+# Step 7 – Final Checks and Troubleshooting
 
-7.1 Visit Your Website
-In Your Browser:
-Type your domain name using https:// in the address bar (not just http://):
+This step ensures your website is working, secure, and visible from anywhere. It also helps you resolve common issues.
 
-arduino
-Copy
-Edit
+---
+
+## 7.1 Visit Your Website
+
+- In your browser, enter your full domain name with `https://`:
+
+```bash
 https://yourdomain.com
-(For your project: https://livinginbetweenblog.space)
+```
+*(Replace with your domain, e.g., `https://livinginbetweenblog.space`)*
 
-Press Enter.
 
-7.2 What You Should See
-Your homepage loads (not the Apache "It works!" page).
+- Press Enter.
 
-A padlock icon appears in the address bar (shows HTTPS is working).
+---
 
-No "Not Secure" or error messages from your browser.
+## 7.2 What Should You See?
 
-All your website features (images, CSS, JavaScript) work properly.
+- Your homepage (not the Apache “It works!” page)
+- A **padlock icon** in the address bar (shows HTTPS is active)
+- No “Not Secure” or browser error messages
+- All features (images, CSS, JS, map, countdown, contact form) work properly
 
-Screenshot suggestions:
+---
 
-Browser showing your live site with the padlock icon.
+## 7.3 Test on Other Devices and Networks
 
-7.3 Try on Different Devices & Networks
-Test your website on your phone and/or a friend’s device.
+- Try on your phone and/or a friend’s device
+- Use both WiFi and mobile data
+- This confirms your DNS and SSL work everywhere, not just for you
 
-Try on both WiFi and mobile data.
+---
 
-This helps you catch DNS or SSL issues you might not see on your main computer.
+## 7.4 Check HTTP to HTTPS Redirection
 
-7.4 Check HTTP to HTTPS Redirection
-In your browser, type your domain with http:// (not https://):
+- In your browser, visit your domain with `http://` (not `https://`):
 
-arduino
-Copy
-Edit
+```bash
 http://yourdomain.com
-You should be automatically redirected to HTTPS (the padlock version).
+```
 
-7.5 Check with Online Tools
-Use SSL Labs SSL Test:
+- You should be **automatically redirected** to `https://yourdomain.com`
 
-Enter your domain and check for an A or A+ grade.
+---
 
-This means your SSL is set up correctly.
+## 7.5 Use Online Testing Tools
 
-Use whatsmydns.net to check if your domain’s A record points to your EC2 IP everywhere in the world.
+- [SSL Labs SSL Test](https://www.ssllabs.com/ssltest/)  
+Enter your domain and review your SSL grade (should be A or A+)
+- [whatsmydns.net](https://www.whatsmydns.net/)  
+Enter your domain to check if DNS points to your EC2 public IP worldwide
 
-7.6 Troubleshooting Common Problems
-A. Browser Says “Not Secure” or No Padlock
-Make sure you’re using https:// in your address bar.
+---
 
-Reload the page or clear your browser cache.
+## Troubleshooting Common Problems
 
-Check your SSL certificate (click the padlock > Certificate).
+**A. Browser says “Not Secure” or no padlock**
 
-If needed, rerun Certbot:
+- Use `https://` in the address bar
+- Reload/refresh the page, or clear browser cache
+- Click the padlock to view SSL certificate details (should say “Let’s Encrypt”)
+- If not working, rerun Certbot:
 
-bash
-Copy
-Edit
+```bash
 sudo certbot --apache
-B. Apache “It Works!” Page Still Shows
-Your new index.html might not be uploaded.
+```
 
-Upload your website files again to /var/www/html/.
+B. Still seeing Apache “It works!” page
 
-Refresh your browser.
+Your new index.html may not be uploaded
 
-C. DNS Problems (Site Won’t Load or Can’t Be Found)
-Check that your domain’s A record points to your EC2 Public IPv4 address.
+Upload your files again to /var/www/html/
 
-Wait 15–60 minutes for DNS changes to spread worldwide.
+Refresh the page
 
-Test using whatsmydns.net.
 
-D. SSL Certificate Errors
-Run Certbot again and double-check your domain name.
+C. DNS Issues (site won’t load or “can’t be found”)
 
-Make sure port 443 is open in your AWS security group.
+Double-check your DNS A Record points to your EC2 public IP
+
+Wait up to 60 minutes for DNS propagation
+
+Test with whatsmydns.net
+
+
+D. SSL certificate errors
+
+Rerun Certbot and double-check your domain spelling
+
+Ensure port 443 is open in AWS Security Group
 
 Restart Apache2:
 
-bash
-Copy
-Edit
+```bash
 sudo systemctl restart apache2
-E. Some Features (CSS/JS/Images) Not Working
-Make sure all related files are uploaded to /var/www/html/.
+```
 
-Double-check file names and paths in your HTML code.
+E. Features missing (images, CSS, JS not loading)
 
-7.7 What Success Looks Like
-Your website is live at https://yourdomain.com.
+Ensure all referenced files are uploaded to /var/www/html/
 
-Visitors see a padlock icon (secure connection).
+Check for typos in filenames or paths in your HTML
 
-No browser security warnings.
+----
+## Success Criteria
+Website loads at https://yourdomain.com with a padlock icon
 
-All features work from any device, anywhere.
+No browser warnings or errors
 
-Congratulations—you have deployed a professional, secure website using Apache2 on AWS EC2!
+All features (images, JS, map, contact form, etc.) work from any device or network
+
+Congratulations!
+You have deployed a professional, secure Apache2 website on AWS EC2 with your own domain.
+
+---
+## Optional Next Steps
+Add new pages or features
+
+Share your site with friends or as part of your portfolio
+
+Set up analytics or backup solutions
+
+## References
+SSL Labs Test
+
+whatsmydns.net
+
+Let’s Encrypt
+
+AWS EC2 Documentation
+

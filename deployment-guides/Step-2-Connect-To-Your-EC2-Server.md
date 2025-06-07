@@ -79,9 +79,11 @@ You are now securely connected to your server!
 Continue with Step 3 – Install Apache2 Web Server.
 
 References
+
 AWS: Connect to your Linux instance using SSH
 
 Murdoch NetworkingLabs: ssh_keys.md
 
 Security Reminder:
+
 Never share your PEM key file or private IP addresses. Keep your key file secure at all times.

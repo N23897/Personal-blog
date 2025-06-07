@@ -15,7 +15,7 @@ sudo apt upgrade -y
 ```
 
 ----
-3.2 Install Apache2
+## 3.2 Install Apache2
 Install the Apache2 package:
 
 ```bash
@@ -23,7 +23,7 @@ sudo apt install apache2 -y
 ```
 
 ---
-3.3 Check Apache2 Status
+## 3.3 Check Apache2 Status
 Verify that Apache2 is running:
 
 ```bash
@@ -35,7 +35,7 @@ You should see Active: active (running) in green.
 Tip: Press q to exit the status window and return to the command prompt.
 
 ----
-3.4 Test Apache2 in Your Browser
+## 3.4 Test Apache2 in Your Browser
 Go to your AWS EC2 console, select Instances, and copy your instance’s Public IPv4 address (for example, 3.9.142.21).
 
 In your web browser, enter the following URL (replace with your public IP):
@@ -53,7 +53,7 @@ You should see the "Apache2 Ubuntu Default Page" with the message:
 "It works!"
 
 -----
-3.5 Where to Place Your Website Files
+## 3.5 Where to Place Your Website Files
 By default, Apache2 serves files from this directory:
 
 ```css
@@ -65,8 +65,8 @@ The default homepage is /var/www/html/index.html.
 You will replace this file with your own index.html and other website assets in the next step.
 
 ----
-3.6 Troubleshooting
-The site doesn’t load or connection refused:
+## 3.6 Troubleshooting
+The site doesn’t load or the connection is refused:
 
 Ensure your AWS Security Group allows HTTP (port 80) from anywhere.
 
@@ -86,7 +86,7 @@ sudo systemctl start apache2
 ```
 
 ----
-3.7 Next Steps
+## 3.7 Next Steps
 Once Apache2 is running and you can see the default page in your browser, continue to Step 4 – Upload Website Files.
 
 References

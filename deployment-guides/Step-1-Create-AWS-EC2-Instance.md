@@ -91,7 +91,7 @@ This guide will walk you through launching a **cloud-based Ubuntu server** (EC2 
 
 ---
 
-## 1.4. Next Steps
+## Next Steps
 
 Proceed to [Step-2-Connect-To-EC2.md](./Step-2-Connect-To-EC2.md) to learn how to SSH into your server for the first time.
 

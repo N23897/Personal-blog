@@ -1,41 +1,54 @@
+<!--
+  entry-Skorea.html – Blog Entry: My Exchange to South Korea
+  Author: Nasrin Sadiqi, 2025 (Student ID: 34898644)
+  This file is a standalone blog post for my "Living In Between" website.
+  Features:
+    - Custom background animation (petals)
+    - Modern layout with custom Google font
+    - Fully responsive and styled content block
+    - Integrated contact form and social links
+    - Clean, reader-friendly design
+  See README for overall project details and references.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>My Exchange to South Korea | Living In Between</title>
+  <meta charset="utf-8" /> <!-- Sets encoding to UTF-8 for all characters -->
+  <title>My Exchange to South Korea | Living In Between</title> <!-- Title in browser tab -->
 
-  <!-- Mobile-friendly meta tag -->
+  <!-- Ensures mobile-friendly scaling and disables zoom for better UX -->
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
-  <!-- Main stylesheets -->
+  <!-- Core and custom CSS for styling layout and special features -->
   <link rel="stylesheet" href="assets/css/main.css" />
   <link rel="stylesheet" href="custom.css" />
 
-  <!-- Aesthetic Google Font -->
+  <!-- Google Fonts: Quicksand for modern, readable typography -->
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Inline styles specific to this page -->
+  <!-- Inline styles for this specific blog entry -->
   <style>
     .main-content {
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 20px;
-      padding: 40px 28px;
-      max-width: 820px;
+      background: rgba(255, 255, 255, 0.92); /* Subtle white background with transparency */
+      border-radius: 20px;                   /* Rounded corners */
+      padding: 40px 28px;                    /* Space inside box */
+      max-width: 820px;                      /* Centered, readable width */
       margin: 60px auto;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08); /* Soft shadow for depth */
       font-family: 'Quicksand', sans-serif;
       color: #444;
     }
 
     .main-content img {
-      max-width: 100%;
+      max-width: 100%;                       /* Responsive images */
       border-radius: 14px;
       margin-bottom: 28px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
-      color: #4c3c64;
+      color: #4c3c64;                        /* Purple headline */
       font-size: 2.2rem;
     }
 
@@ -54,25 +67,29 @@
 </head>
 
 <body class="is-preload">
-  <!-- Flower shower animation (handled in script) -->
+  <!-- Decorative falling petal animation, handled by the script below -->
   <div id="petal-container"></div>
 
   <div id="wrapper">
 
-    <!-- Header with site navigation -->
+    <!-- Header with the navigation menu and mood toggle button -->
     <header id="header">
       <div class="inner">
+        <!-- Logo/title link back to homepage -->
         <a href="index.html" class="logo"><span class="title">Living In Between</span></a>
+        <!-- Navigation links and mood toggle -->
         <nav>
           <ul>
             <li><a href="#menu">Menu</a></li>
-            <li><button id="toggle-mood-btn" onclick="toggleMood()">Press me</button></li>
+            <li>
+              <button id="toggle-mood-btn" onclick="toggleMood()">Press me</button>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <!-- Slide-out navigation menu -->
+    <!-- Slide-out navigation menu for mobile and site-wide links -->
     <nav id="menu">
       <h2>Menu</h2>
       <ul>
@@ -83,16 +100,16 @@
       </ul>
     </nav>
 
-    <!-- Main blog content -->
+    <!-- Blog main content: All text and images for this story -->
     <div id="main">
       <div class="main-content">
         <h1>My Exchange to South Korea</h1>
         <p class="intro">A semester of change, challenge, and discovery.</p>
 
-        <!-- Feature image -->
+        <!-- Feature image for blog post -->
         <img src="images/IMG_6896.jpeg" alt="Korean food during exchange" />
 
-        <!-- Story body -->
+        <!-- Main story body paragraphs -->
         <p class="paragraph">
           Arriving in South Korea felt like stepping into a dream and a maze all at once. The first few days were filled with neon signs, unfamiliar sounds, and a beautiful sense of disorientation. I was both terrified and thrilled. I had never lived this far from home, and it felt like the world had suddenly become much bigger and more immediate.
         </p>
@@ -108,16 +125,23 @@
       </div>
     </div>
 
-    <!-- Footer with contact form and social links -->
+    <!-- Footer with contact form and social media links -->
     <footer id="footer">
       <div class="inner">
         <section>
           <h2>Get in touch</h2>
+          <!-- Sends messages to Formspree for email notifications -->
           <form action="https://formspree.io/f/xovwvyzo" method="POST">
             <div class="fields">
-              <div class="field half"><input type="text" name="name" placeholder="Name" required /></div>
-              <div class="field half"><input type="email" name="email" placeholder="Email" required /></div>
-              <div class="field"><textarea name="message" placeholder="Message" required></textarea></div>
+              <div class="field half">
+                <input type="text" name="name" placeholder="Name" required />
+              </div>
+              <div class="field half">
+                <input type="email" name="email" placeholder="Email" required />
+              </div>
+              <div class="field">
+                <textarea name="message" placeholder="Message" required></textarea>
+              </div>
             </div>
             <ul class="actions">
               <li><input type="submit" value="Send" class="primary" /></li>
@@ -125,12 +149,14 @@
           </form>
         </section>
 
+        <!-- Social icons for Instagram and GitHub -->
         <section>
           <h2>Follow</h2>
           <a href="https://instagram.com/nasrin.s01/" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
           <a href="https://github.com/N23897" target="_blank" class="icon brands style2 fa-github"><span class="label">GitHub</span></a>
         </section>
 
+        <!-- Copyright and credits -->
         <ul class="copyright">
           <li>&copy; 2025 Living In Between. All rights reserved.</li>
           <li>Design adapted from <a href="http://html5up.net">HTML5 UP</a></li>
@@ -139,7 +165,7 @@
     </footer>
   </div>
 
-  <!-- Petal animation script -->
+  <!-- Petal animation: creates falling petal emojis on page load -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const petalContainer = document.getElementById("petal-container");
@@ -147,23 +173,23 @@
 
       setInterval(() => {
         const petal = document.createElement("span");
-        petal.textContent = petalEmoji;
-        petal.style.left = Math.random() * 100 + "vw";
-        petal.style.animationDuration = (Math.random() * 4 + 6) + "s";
-        petal.style.fontSize = (Math.random() * 10 + 20) + "px";
-        petal.style.opacity = Math.random() * 0.3 + 0.5;
+        petal.textContent = petalEmoji;                       // Use flower emoji as petal
+        petal.style.left = Math.random() * 100 + "vw";        // Random left position
+        petal.style.animationDuration = (Math.random() * 4 + 6) + "s"; // Random fall speed
+        petal.style.fontSize = (Math.random() * 10 + 20) + "px";       // Random size
+        petal.style.opacity = Math.random() * 0.3 + 0.5;      // Random opacity
         petalContainer.appendChild(petal);
-        setTimeout(() => petal.remove(), 10000);
-      }, 450);
+        setTimeout(() => petal.remove(), 10000);              // Remove after 10 seconds
+      }, 450);                                                // New petal every 450ms
     });
   </script>
 
-  <!-- Core Scripts -->
+  <!-- Core JS files for layout, responsiveness, and interactive features -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/browser.min.js"></script>
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="custom.js"></script>
+  <script src="custom.js"></script> <!-- My own custom features: mood toggle, etc. -->
 </body>
 </html>
